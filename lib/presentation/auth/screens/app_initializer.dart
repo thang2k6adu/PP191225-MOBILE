@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jt291_flutter_mobile/core/core.dart';
 import 'package:jt291_flutter_mobile/presentation/auth/controllers/auth_controller.dart';
-import 'package:jt291_flutter_mobile/presentation/auth/screens/splash_screen.dart';
 import 'package:jt291_flutter_mobile/routers/app_router.dart';
 
 class AppInitializer extends ConsumerStatefulWidget {

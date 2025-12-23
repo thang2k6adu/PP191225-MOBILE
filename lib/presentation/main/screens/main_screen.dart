@@ -21,7 +21,6 @@ class _MainScreenState extends ConsumerState<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final currentUser = ref.watch(authControllerProvider);
     
     // TODO: Replace with your actual screens
     final List<Widget> children = [
