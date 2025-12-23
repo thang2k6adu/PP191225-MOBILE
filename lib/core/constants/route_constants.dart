@@ -6,6 +6,7 @@ class RouteConstants {
   static const String splash = '/splash';
   static const String main = '/main';
   static const String onboarding = '/onboarding';
+  static const String matchmaking = '/matchmaking';
 
   static const String userQrCode = "/user/qr-code";
   static const String userScanner = "/user/scanner";
@@ -46,4 +47,8 @@ class RouteConstants {
   static const String postLikes = "/post/:postId/likes";
   static const String notifications = "/notifications";
   static const String hashtag = "/hashtag/:hashtagId";
+  
+  // Room routes
+  static const String roomList = "/rooms";
+  static const String roomDetail = "/rooms/:roomId";
 }

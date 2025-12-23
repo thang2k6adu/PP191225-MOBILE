@@ -7,6 +7,9 @@ class ApiService {
   late Dio _dio;
   final _storage = const FlutterSecureStorage();
 
+  // Getter for Dio instance
+  Dio get dio => _dio;
+
   ApiService() {
     _dio = Dio(
       BaseOptions(

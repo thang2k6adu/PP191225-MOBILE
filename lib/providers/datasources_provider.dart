@@ -4,6 +4,10 @@ import 'package:jt291_flutter_mobile/data/datasources/local/auth_local_datasourc
 import 'package:jt291_flutter_mobile/data/datasources/local/auth_local_datasource_impl.dart';
 import 'package:jt291_flutter_mobile/data/datasources/remote/auth_remote_datasource.dart';
 import 'package:jt291_flutter_mobile/data/datasources/remote/auth_remote_datasource_impl.dart';
+import 'package:jt291_flutter_mobile/data/datasources/remote/matchmaking_remote_datasource.dart';
+import 'package:jt291_flutter_mobile/data/datasources/remote/matchmaking_remote_datasource_impl.dart';
+import 'package:jt291_flutter_mobile/data/datasources/remote/room_remote_datasource.dart';
+import 'package:jt291_flutter_mobile/data/datasources/remote/room_remote_datasource_impl.dart';
 import 'package:jt291_flutter_mobile/data/datasources/remote/user_remote_datasource.dart';
 import 'package:jt291_flutter_mobile/data/datasources/remote/user_remote_datasource_impl.dart';
 import 'package:jt291_flutter_mobile/data/services/api_service.dart';
@@ -35,4 +39,15 @@ final authLocalDataSourceProvider = Provider<AuthLocalDataSource>((ref) {
 final userRemoteDataSourceProvider = Provider<UserRemoteDataSource>((ref) {
   final apiService = ref.watch(apiServiceProvider);
   return UserRemoteDataSourceImpl(apiService);
+});
+
+final roomRemoteDataSourceProvider = Provider<RoomRemoteDataSource>((ref) {
+  final apiService = ref.watch(apiServiceProvider);
+  return RoomRemoteDataSourceImpl(apiService);
+});
+
+final matchmakingRemoteDataSourceProvider =
+    Provider<MatchmakingRemoteDataSource>((ref) {
+  final apiService = ref.watch(apiServiceProvider);
+  return MatchmakingRemoteDataSourceImpl(apiService);
 });
