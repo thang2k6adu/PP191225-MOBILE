@@ -75,7 +75,8 @@ class AuthController extends AutoDisposeNotifier<User?> {
           );
         },
         (authResponse) async {
-          state = authResponse.user;
+          // Load user profile from API after successful login
+          await loadCurrentUser();
 
           overlay.showWithTimeout(message: "Đăng nhập thành công");
           await Future.delayed(const Duration(milliseconds: 500));
@@ -113,7 +114,8 @@ class AuthController extends AutoDisposeNotifier<User?> {
           );
         },
         (authResponse) async {
-          state = authResponse.user;
+          // Load user profile from API after successful login
+          await loadCurrentUser();
 
           overlay.showWithTimeout(message: "Đăng nhập thành công");
           await Future.delayed(const Duration(milliseconds: 500));
@@ -150,7 +152,8 @@ class AuthController extends AutoDisposeNotifier<User?> {
           );
         },
         (authResponse) async {
-          state = authResponse.user;
+          // Load user profile from API after successful login
+          await loadCurrentUser();
 
           overlay.showWithTimeout(message: "Đăng nhập thành công");
           await Future.delayed(const Duration(milliseconds: 500));

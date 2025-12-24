@@ -12,23 +12,21 @@ part 'auth_response_dto.g.dart';
 abstract class AuthResponseDto with _$AuthResponseDto {
   const AuthResponseDto._();
 
-  const factory AuthResponseDto({
-    required UserDto user,
-    required TokenDto tokens,
-  }) = _AuthResponseDto;
+  const factory AuthResponseDto({UserDto? user, required TokenDto tokens}) =
+      _AuthResponseDto;
 
   factory AuthResponseDto.fromJson(Map<String, Object?> json) =>
       _$AuthResponseDtoFromJson(json);
 
   /// Convert DTO to Domain Entity
   AuthResponse toEntity() {
-    return AuthResponse(user: user.toEntity(), tokens: tokens.toEntity());
+    return AuthResponse(user: user?.toEntity(), tokens: tokens.toEntity());
   }
 }
 
 /// Extension to convert Domain Entity to DTO
 extension AuthResponseToDto on AuthResponse {
   AuthResponseDto toDto() {
-    return AuthResponseDto(user: user.toDto(), tokens: tokens.toDto());
+    return AuthResponseDto(user: user?.toDto(), tokens: tokens.toDto());
   }
 }

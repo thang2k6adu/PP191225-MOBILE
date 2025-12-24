@@ -4,10 +4,10 @@ import 'package:pp191225/domain/entities/users/user.dart';
 /// Auth response entity - Represents authentication response in domain layer
 /// Used for login/register operations
 class AuthResponse {
-  final User user;
+  final User? user;
   final Token tokens;
 
-  const AuthResponse({required this.user, required this.tokens});
+  const AuthResponse({this.user, required this.tokens});
 
   @override
   bool operator ==(Object other) {

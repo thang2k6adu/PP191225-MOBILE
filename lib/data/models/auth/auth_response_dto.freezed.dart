@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AuthResponseDto {
 
- UserDto get user; TokenDto get tokens;
+ UserDto? get user; TokenDto get tokens;
 /// Create a copy of AuthResponseDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,11 +48,11 @@ abstract mixin class $AuthResponseDtoCopyWith<$Res>  {
   factory $AuthResponseDtoCopyWith(AuthResponseDto value, $Res Function(AuthResponseDto) _then) = _$AuthResponseDtoCopyWithImpl;
 @useResult
 $Res call({
- UserDto user, TokenDto tokens
+ UserDto? user, TokenDto tokens
 });
 
 
-$UserDtoCopyWith<$Res> get user;$TokenDtoCopyWith<$Res> get tokens;
+$UserDtoCopyWith<$Res>? get user;$TokenDtoCopyWith<$Res> get tokens;
 
 }
 /// @nodoc
@@ -65,10 +65,10 @@ class _$AuthResponseDtoCopyWithImpl<$Res>
 
 /// Create a copy of AuthResponseDto
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? user = null,Object? tokens = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? user = freezed,Object? tokens = null,}) {
   return _then(_self.copyWith(
-user: null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
-as UserDto,tokens: null == tokens ? _self.tokens : tokens // ignore: cast_nullable_to_non_nullable
+user: freezed == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
+as UserDto?,tokens: null == tokens ? _self.tokens : tokens // ignore: cast_nullable_to_non_nullable
 as TokenDto,
   ));
 }
@@ -76,9 +76,12 @@ as TokenDto,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$UserDtoCopyWith<$Res> get user {
-  
-  return $UserDtoCopyWith<$Res>(_self.user, (value) {
+$UserDtoCopyWith<$Res>? get user {
+    if (_self.user == null) {
+    return null;
+  }
+
+  return $UserDtoCopyWith<$Res>(_self.user!, (value) {
     return _then(_self.copyWith(user: value));
   });
 }/// Create a copy of AuthResponseDto
@@ -172,7 +175,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( UserDto user,  TokenDto tokens)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( UserDto? user,  TokenDto tokens)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AuthResponseDto() when $default != null:
 return $default(_that.user,_that.tokens);case _:
@@ -193,7 +196,7 @@ return $default(_that.user,_that.tokens);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( UserDto user,  TokenDto tokens)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( UserDto? user,  TokenDto tokens)  $default,) {final _that = this;
 switch (_that) {
 case _AuthResponseDto():
 return $default(_that.user,_that.tokens);case _:
@@ -213,7 +216,7 @@ return $default(_that.user,_that.tokens);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( UserDto user,  TokenDto tokens)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( UserDto? user,  TokenDto tokens)?  $default,) {final _that = this;
 switch (_that) {
 case _AuthResponseDto() when $default != null:
 return $default(_that.user,_that.tokens);case _:
@@ -228,10 +231,10 @@ return $default(_that.user,_that.tokens);case _:
 @JsonSerializable()
 
 class _AuthResponseDto extends AuthResponseDto {
-  const _AuthResponseDto({required this.user, required this.tokens}): super._();
+  const _AuthResponseDto({this.user, required this.tokens}): super._();
   factory _AuthResponseDto.fromJson(Map<String, dynamic> json) => _$AuthResponseDtoFromJson(json);
 
-@override final  UserDto user;
+@override final  UserDto? user;
 @override final  TokenDto tokens;
 
 /// Create a copy of AuthResponseDto
@@ -267,11 +270,11 @@ abstract mixin class _$AuthResponseDtoCopyWith<$Res> implements $AuthResponseDto
   factory _$AuthResponseDtoCopyWith(_AuthResponseDto value, $Res Function(_AuthResponseDto) _then) = __$AuthResponseDtoCopyWithImpl;
 @override @useResult
 $Res call({
- UserDto user, TokenDto tokens
+ UserDto? user, TokenDto tokens
 });
 
 
-@override $UserDtoCopyWith<$Res> get user;@override $TokenDtoCopyWith<$Res> get tokens;
+@override $UserDtoCopyWith<$Res>? get user;@override $TokenDtoCopyWith<$Res> get tokens;
 
 }
 /// @nodoc
@@ -284,10 +287,10 @@ class __$AuthResponseDtoCopyWithImpl<$Res>
 
 /// Create a copy of AuthResponseDto
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? user = null,Object? tokens = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? user = freezed,Object? tokens = null,}) {
   return _then(_AuthResponseDto(
-user: null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
-as UserDto,tokens: null == tokens ? _self.tokens : tokens // ignore: cast_nullable_to_non_nullable
+user: freezed == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
+as UserDto?,tokens: null == tokens ? _self.tokens : tokens // ignore: cast_nullable_to_non_nullable
 as TokenDto,
   ));
 }
@@ -296,9 +299,12 @@ as TokenDto,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$UserDtoCopyWith<$Res> get user {
-  
-  return $UserDtoCopyWith<$Res>(_self.user, (value) {
+$UserDtoCopyWith<$Res>? get user {
+    if (_self.user == null) {
+    return null;
+  }
+
+  return $UserDtoCopyWith<$Res>(_self.user!, (value) {
     return _then(_self.copyWith(user: value));
   });
 }/// Create a copy of AuthResponseDto
