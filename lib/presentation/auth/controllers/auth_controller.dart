@@ -33,21 +33,27 @@ class AuthController extends AutoDisposeNotifier<User?> {
   /// Load current user profile from stored token
   Future<bool> loadCurrentUser() async {
     try {
+      print('🔄 Loading current user profile...');
       final result = await _getCurrentUserUseCase();
 
       return result.fold(
         (failure) {
           // Token might be invalid or expired, clear state
+          print('❌ Failed to load user profile: ${failure.message}');
           state = null;
           return false;
         },
         (user) {
+          print(
+            '✅ User profile loaded successfully: ${user.id} - ${user.name}',
+          );
           state = user;
           return true;
         },
       );
     } catch (e) {
       // Handle any unexpected errors
+      print('❌ Exception loading user profile: $e');
       state = null;
       return false;
     }
@@ -75,9 +81,27 @@ class AuthController extends AutoDisposeNotifier<User?> {
           );
         },
         (authResponse) async {
-          // Load user profile from API after successful login
-          await loadCurrentUser();
+          print('✅ Login successful!');
 
+          // Set user from auth response (no need to fetch separately)
+          if (authResponse.user != null) {
+            state = authResponse.user;
+            print(
+              '✅ User profile loaded from login response: ${authResponse.user!.id}',
+            );
+          } else {
+            print('⚠️ No user data in login response, fetching from API...');
+            final userLoaded = await loadCurrentUser();
+            if (!userLoaded) {
+              print('❌ User profile not loaded, staying on login screen');
+              overlay.showWithTimeout(
+                message: "Không thể tải thông tin người dùng",
+              );
+              return;
+            }
+          }
+
+          print('✅ Navigating to home screen...');
           overlay.showWithTimeout(message: "Đăng nhập thành công");
           await Future.delayed(const Duration(milliseconds: 500));
 
@@ -114,9 +138,27 @@ class AuthController extends AutoDisposeNotifier<User?> {
           );
         },
         (authResponse) async {
-          // Load user profile from API after successful login
-          await loadCurrentUser();
+          print('✅ Login successful!');
 
+          // Set user from auth response (no need to fetch separately)
+          if (authResponse.user != null) {
+            state = authResponse.user;
+            print(
+              '✅ User profile loaded from login response: ${authResponse.user!.id}',
+            );
+          } else {
+            print('⚠️ No user data in login response, fetching from API...');
+            final userLoaded = await loadCurrentUser();
+            if (!userLoaded) {
+              print('❌ User profile not loaded, staying on login screen');
+              overlay.showWithTimeout(
+                message: "Không thể tải thông tin người dùng",
+              );
+              return;
+            }
+          }
+
+          print('✅ Navigating to home screen...');
           overlay.showWithTimeout(message: "Đăng nhập thành công");
           await Future.delayed(const Duration(milliseconds: 500));
 
@@ -152,9 +194,27 @@ class AuthController extends AutoDisposeNotifier<User?> {
           );
         },
         (authResponse) async {
-          // Load user profile from API after successful login
-          await loadCurrentUser();
+          print('✅ Login successful!');
 
+          // Set user from auth response (no need to fetch separately)
+          if (authResponse.user != null) {
+            state = authResponse.user;
+            print(
+              '✅ User profile loaded from login response: ${authResponse.user!.id}',
+            );
+          } else {
+            print('⚠️ No user data in login response, fetching from API...');
+            final userLoaded = await loadCurrentUser();
+            if (!userLoaded) {
+              print('❌ User profile not loaded, staying on login screen');
+              overlay.showWithTimeout(
+                message: "Không thể tải thông tin người dùng",
+              );
+              return;
+            }
+          }
+
+          print('✅ Navigating to home screen...');
           overlay.showWithTimeout(message: "Đăng nhập thành công");
           await Future.delayed(const Duration(milliseconds: 500));
 
