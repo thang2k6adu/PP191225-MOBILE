@@ -201,7 +201,7 @@ class TokenPairDto with _$TokenPairDto {
 `lib/data/models/auth/user_dto.dart`
 ```dart
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jt291_flutter_mobile/domain/entities/auth/user.dart';
+import 'package:pp191225/domain/entities/auth/user.dart';
 
 part 'user_dto.freezed.dart';
 part 'user_dto.g.dart';
@@ -234,10 +234,10 @@ extension UserDtoX on UserDto {
 `lib/data/models/auth/auth_response_dto.dart`
 ```dart
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jt291_flutter_mobile/data/models/auth/token_pair_dto.dart';
-import 'package:jt291_flutter_mobile/data/models/auth/user_dto.dart';
-import 'package:jt291_flutter_mobile/domain/entities/auth/auth_response.dart';
-import 'package:jt291_flutter_mobile/domain/entities/auth/token_pair.dart';
+import 'package:pp191225/data/models/auth/token_pair_dto.dart';
+import 'package:pp191225/data/models/auth/user_dto.dart';
+import 'package:pp191225/domain/entities/auth/auth_response.dart';
+import 'package:pp191225/domain/entities/auth/token_pair.dart';
 
 part 'auth_response_dto.freezed.dart';
 part 'auth_response_dto.g.dart';
@@ -274,8 +274,8 @@ dart run build_runner build --delete-conflicting-outputs
 
 `lib/data/datasources/remote/auth_remote_datasource.dart`
 ```dart
-import 'package:jt291_flutter_mobile/data/models/auth/auth_response_dto.dart';
-import 'package:jt291_flutter_mobile/data/models/auth/user_dto.dart';
+import 'package:pp191225/data/models/auth/auth_response_dto.dart';
+import 'package:pp191225/data/models/auth/user_dto.dart';
 
 abstract class AuthRemoteDataSource {
   Future<AuthResponseDto> login({
@@ -296,11 +296,11 @@ abstract class AuthRemoteDataSource {
 `lib/data/datasources/remote/auth_remote_datasource_impl.dart`
 ```dart
 import 'package:dio/dio.dart';
-import 'package:jt291_flutter_mobile/data/datasources/remote/auth_remote_datasource.dart';
-import 'package:jt291_flutter_mobile/data/models/auth/auth_response_dto.dart';
-import 'package:jt291_flutter_mobile/data/models/auth/user_dto.dart';
-import 'package:jt291_flutter_mobile/data/models/base/api_response.dart';
-import 'package:jt291_flutter_mobile/data/services/api_service.dart';
+import 'package:pp191225/data/datasources/remote/auth_remote_datasource.dart';
+import 'package:pp191225/data/models/auth/auth_response_dto.dart';
+import 'package:pp191225/data/models/auth/user_dto.dart';
+import 'package:pp191225/data/models/base/api_response.dart';
+import 'package:pp191225/data/services/api_service.dart';
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final ApiService apiService;
@@ -388,11 +388,11 @@ class AuthResponse {
 
 **Repository interface** (`lib/domain/repositories/auth_repository.dart`)
 ```dart
-import 'package:jt291_flutter_mobile/core/utils/either.dart';
-import 'package:jt291_flutter_mobile/domain/entities/auth/auth_response.dart';
-import 'package:jt291_flutter_mobile/domain/entities/auth/user.dart';
-import 'package:jt291_flutter_mobile/domain/entities/auth/token_pair.dart';
-import 'package:jt291_flutter_mobile/domain/failures/failures.dart';
+import 'package:pp191225/core/utils/either.dart';
+import 'package:pp191225/domain/entities/auth/auth_response.dart';
+import 'package:pp191225/domain/entities/auth/user.dart';
+import 'package:pp191225/domain/entities/auth/token_pair.dart';
+import 'package:pp191225/domain/failures/failures.dart';
 
 abstract class AuthRepository {
   Future<Either<Failure, AuthResponse>> login({
@@ -496,13 +496,13 @@ class LogoutUseCase {
 
 `lib/data/repositories/auth_repository_impl.dart`
 ```dart
-import 'package:jt291_flutter_mobile/core/utils/either.dart';
-import 'package:jt291_flutter_mobile/data/datasources/remote/auth_remote_datasource.dart';
-import 'package:jt291_flutter_mobile/domain/entities/auth/auth_response.dart';
-import 'package:jt291_flutter_mobile/domain/entities/auth/user.dart';
-import 'package:jt291_flutter_mobile/domain/entities/auth/token_pair.dart';
-import 'package:jt291_flutter_mobile/domain/failures/failures.dart';
-import 'package:jt291_flutter_mobile/domain/repositories/auth_repository.dart';
+import 'package:pp191225/core/utils/either.dart';
+import 'package:pp191225/data/datasources/remote/auth_remote_datasource.dart';
+import 'package:pp191225/domain/entities/auth/auth_response.dart';
+import 'package:pp191225/domain/entities/auth/user.dart';
+import 'package:pp191225/domain/entities/auth/token_pair.dart';
+import 'package:pp191225/domain/failures/failures.dart';
+import 'package:pp191225/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remote;
@@ -600,8 +600,8 @@ final authRemoteDataSourceProvider = Provider<AuthRemoteDataSource>((ref) {
 
 `lib/providers/repositories_provider.dart`
 ```dart
-import 'package:jt291_flutter_mobile/data/repositories/auth_repository_impl.dart';
-import 'package:jt291_flutter_mobile/domain/repositories/auth_repository.dart';
+import 'package:pp191225/data/repositories/auth_repository_impl.dart';
+import 'package:pp191225/domain/repositories/auth_repository.dart';
 
 final authRepositoryProvider = Provider<AuthRepository>((ref) {
   final remote = ref.watch(authRemoteDataSourceProvider);
@@ -612,10 +612,10 @@ final authRepositoryProvider = Provider<AuthRepository>((ref) {
 
 `lib/providers/usecases_provider.dart`
 ```dart
-import 'package:jt291_flutter_mobile/domain/usecases/auth/login_usecase.dart';
-import 'package:jt291_flutter_mobile/domain/usecases/auth/refresh_token_usecase.dart';
-import 'package:jt291_flutter_mobile/domain/usecases/auth/get_profile_usecase.dart';
-import 'package:jt291_flutter_mobile/domain/usecases/auth/logout_usecase.dart';
+import 'package:pp191225/domain/usecases/auth/login_usecase.dart';
+import 'package:pp191225/domain/usecases/auth/refresh_token_usecase.dart';
+import 'package:pp191225/domain/usecases/auth/get_profile_usecase.dart';
+import 'package:pp191225/domain/usecases/auth/logout_usecase.dart';
 
 final loginUseCaseProvider = Provider<LoginUseCase>((ref) {
   final repo = ref.watch(authRepositoryProvider);
@@ -643,7 +643,7 @@ final logoutUseCaseProvider = Provider<LogoutUseCase>((ref) {
 `lib/presentation/auth/controllers/auth_state.dart`
 ```dart
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jt291_flutter_mobile/domain/entities/auth/user.dart';
+import 'package:pp191225/domain/entities/auth/user.dart';
 
 part 'auth_state.freezed.dart';
 
@@ -661,12 +661,12 @@ class AuthState with _$AuthState {
 `lib/presentation/auth/controllers/auth_controller.dart`
 ```dart
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jt291_flutter_mobile/domain/usecases/auth/login_usecase.dart';
-import 'package:jt291_flutter_mobile/domain/usecases/auth/refresh_token_usecase.dart';
-import 'package:jt291_flutter_mobile/domain/usecases/auth/get_profile_usecase.dart';
-import 'package:jt291_flutter_mobile/domain/usecases/auth/logout_usecase.dart';
-import 'package:jt291_flutter_mobile/presentation/auth/controllers/auth_state.dart';
-import 'package:jt291_flutter_mobile/providers/usecases_provider.dart';
+import 'package:pp191225/domain/usecases/auth/login_usecase.dart';
+import 'package:pp191225/domain/usecases/auth/refresh_token_usecase.dart';
+import 'package:pp191225/domain/usecases/auth/get_profile_usecase.dart';
+import 'package:pp191225/domain/usecases/auth/logout_usecase.dart';
+import 'package:pp191225/presentation/auth/controllers/auth_state.dart';
+import 'package:pp191225/providers/usecases_provider.dart';
 
 final authControllerProvider =
     AutoDisposeNotifierProvider<AuthController, AuthState>(

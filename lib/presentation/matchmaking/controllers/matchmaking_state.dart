@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jt291_flutter_mobile/domain/entities/matchmaking/match_data.dart';
-import 'package:jt291_flutter_mobile/domain/entities/matchmaking/matchmaking_state.dart';
+import 'package:pp191225/domain/entities/matchmaking/match_data.dart';
+import 'package:pp191225/domain/entities/matchmaking/matchmaking_state.dart';
 
 part 'matchmaking_state.freezed.dart';
 

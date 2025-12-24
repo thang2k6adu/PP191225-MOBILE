@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBQAtIOAPsvjSc4WtVmeEtp1RsictAcGdU',
-    appId: '1:505088829368:android:2d0f6e64ab486b3bb5d14d',
+    appId: '1:505088829368:android:7f636180243b50ceb5d14d',
     messagingSenderId: '505088829368',
     projectId: 'pp191225-53185',
     storageBucket: 'pp191225-53185.firebasestorage.app',
@@ -59,13 +59,13 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDnHHR6xETXBn7iqwlWcbQ5PNSun1ZUWnU',
-    appId: '1:505088829368:ios:2751859782c537c2b5d14d',
+    appId: '1:505088829368:ios:2c61e9e0900e76f5b5d14d',
     messagingSenderId: '505088829368',
     projectId: 'pp191225-53185',
     storageBucket: 'pp191225-53185.firebasestorage.app',
     androidClientId: '505088829368-bdeenngrpir21gqedud6usr21q4e82fg.apps.googleusercontent.com',
-    iosClientId: '505088829368-q9dm7b7llkoh22ojd95g19p8g01hugs1.apps.googleusercontent.com',
-    iosBundleId: 'com.example.temp',
+    iosClientId: '505088829368-c0b67cid4q8qll7ebksagqhak33938sf.apps.googleusercontent.com',
+    iosBundleId: 'com.thang2k6adu.pp191225',
   );
 
 }

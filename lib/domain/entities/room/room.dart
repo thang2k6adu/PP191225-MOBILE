@@ -1,6 +1,6 @@
-import 'package:jt291_flutter_mobile/data/models/room/room_status.dart';
-import 'package:jt291_flutter_mobile/data/models/room/room_type.dart';
-import 'package:jt291_flutter_mobile/domain/entities/room/room_member.dart';
+import 'package:pp191225/data/models/room/room_status.dart';
+import 'package:pp191225/data/models/room/room_type.dart';
+import 'package:pp191225/domain/entities/room/room_member.dart';
 
 class Room {
   final String id;

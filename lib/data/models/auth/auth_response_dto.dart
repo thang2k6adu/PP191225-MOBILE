@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jt291_flutter_mobile/data/models/auth/token_dto.dart';
-import 'package:jt291_flutter_mobile/data/models/users/user_dto.dart';
-import 'package:jt291_flutter_mobile/domain/entities/auth/auth_response.dart';
+import 'package:pp191225/data/models/auth/token_dto.dart';
+import 'package:pp191225/data/models/users/user_dto.dart';
+import 'package:pp191225/domain/entities/auth/auth_response.dart';
 
 part 'auth_response_dto.freezed.dart';
 part 'auth_response_dto.g.dart';
@@ -22,19 +22,13 @@ abstract class AuthResponseDto with _$AuthResponseDto {
 
   /// Convert DTO to Domain Entity
   AuthResponse toEntity() {
-    return AuthResponse(
-      user: user.toEntity(),
-      tokens: tokens.toEntity(),
-    );
+    return AuthResponse(user: user.toEntity(), tokens: tokens.toEntity());
   }
 }
 
 /// Extension to convert Domain Entity to DTO
 extension AuthResponseToDto on AuthResponse {
   AuthResponseDto toDto() {
-    return AuthResponseDto(
-      user: user.toDto(),
-      tokens: tokens.toDto(),
-    );
+    return AuthResponseDto(user: user.toDto(), tokens: tokens.toDto());
   }
 }

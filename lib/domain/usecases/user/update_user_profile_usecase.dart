@@ -1,7 +1,7 @@
-import 'package:jt291_flutter_mobile/core/utils/either.dart';
-import 'package:jt291_flutter_mobile/domain/entities/users/user.dart';
-import 'package:jt291_flutter_mobile/domain/failures/failures.dart';
-import 'package:jt291_flutter_mobile/domain/repositories/user_repository.dart';
+import 'package:pp191225/core/utils/either.dart';
+import 'package:pp191225/domain/entities/users/user.dart';
+import 'package:pp191225/domain/failures/failures.dart';
+import 'package:pp191225/domain/repositories/user_repository.dart';
 
 /// Update user profile use case
 class UpdateUserProfileUseCase {
@@ -9,10 +9,7 @@ class UpdateUserProfileUseCase {
 
   UpdateUserProfileUseCase(this.repository);
 
-  Future<Either<Failure, User>> call({
-    String? name,
-    String? avatar,
-  }) {
+  Future<Either<Failure, User>> call({String? name, String? avatar}) {
     return repository.updateProfile(name: name, avatar: avatar);
   }
 }

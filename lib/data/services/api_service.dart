@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:jt291_flutter_mobile/core/constants/constants.dart';
-import 'package:jt291_flutter_mobile/data/models/auth/token_dto.dart';
+import 'package:pp191225/core/constants/constants.dart';
+import 'package:pp191225/data/models/auth/token_dto.dart';
 
 class ApiService {
   late Dio _dio;
@@ -14,9 +14,7 @@ class ApiService {
     _dio = Dio(
       BaseOptions(
         baseUrl: ApiConstants.baseUrl,
-        connectTimeout: Duration(
-          milliseconds: ApiConstants.connectTimeout,
-        ),
+        connectTimeout: Duration(milliseconds: ApiConstants.connectTimeout),
       ),
     );
 
@@ -84,9 +82,8 @@ class ApiService {
     try {
       final refreshToken = await _storage.read(
         key: StorageConstants.refreshTokenKey,
-      );      // create new Dio other than particularly to avoid infinite loops
+      ); // create new Dio other than particularly to avoid infinite loops
       final refreshDio = Dio(BaseOptions(baseUrl: ApiConstants.baseUrl));
-
 
       final response = await refreshDio.post(
         '/auth/refresh',

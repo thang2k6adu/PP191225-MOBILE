@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jt291_flutter_mobile/domain/entities/room/room.dart';
+import 'package:pp191225/domain/entities/room/room.dart';
 
 part 'room_state.freezed.dart';
 

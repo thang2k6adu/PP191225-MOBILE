@@ -1,8 +1,8 @@
-import 'package:jt291_flutter_mobile/data/datasources/remote/room_remote_datasource.dart';
-import 'package:jt291_flutter_mobile/data/models/base/api_response.dart';
-import 'package:jt291_flutter_mobile/data/models/room/matchmaking_response_dto.dart';
-import 'package:jt291_flutter_mobile/data/models/room/room_dto.dart';
-import 'package:jt291_flutter_mobile/data/services/api_service.dart';
+import 'package:pp191225/data/datasources/remote/room_remote_datasource.dart';
+import 'package:pp191225/data/models/base/api_response.dart';
+import 'package:pp191225/data/models/room/matchmaking_response_dto.dart';
+import 'package:pp191225/data/models/room/room_dto.dart';
+import 'package:pp191225/data/services/api_service.dart';
 
 class RoomRemoteDataSourceImpl implements RoomRemoteDataSource {
   final ApiService apiService;

@@ -1,8 +1,8 @@
-import 'package:jt291_flutter_mobile/data/models/matchmaking/match_found_dto.dart';
-import 'package:jt291_flutter_mobile/data/models/matchmaking/matchmaking_response_dto.dart';
-import 'package:jt291_flutter_mobile/data/models/matchmaking/matchmaking_status_dto.dart';
-import 'package:jt291_flutter_mobile/data/models/matchmaking/opponent_event_dto.dart';
-import 'package:jt291_flutter_mobile/data/models/matchmaking/room_event_dto.dart';
+import 'package:pp191225/data/models/matchmaking/match_found_dto.dart';
+import 'package:pp191225/data/models/matchmaking/matchmaking_response_dto.dart';
+import 'package:pp191225/data/models/matchmaking/matchmaking_status_dto.dart';
+import 'package:pp191225/data/models/matchmaking/opponent_event_dto.dart';
+import 'package:pp191225/data/models/matchmaking/room_event_dto.dart';
 
 /// Remote data source for matchmaking
 /// Handles REST API + WebSocket communication

@@ -1,5 +1,5 @@
-import 'package:jt291_flutter_mobile/data/models/room/matchmaking_response_dto.dart';
-import 'package:jt291_flutter_mobile/data/models/room/room_dto.dart';
+import 'package:pp191225/data/models/room/matchmaking_response_dto.dart';
+import 'package:pp191225/data/models/room/room_dto.dart';
 
 abstract class RoomRemoteDataSource {
   /// Join matchmaking queue

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jt291_flutter_mobile/shared/helpers/router_helper.dart';
+import 'package:pp191225/shared/helpers/router_helper.dart';
 
 /// AppBar có nút Back và tiêu đề nằm giữa.
 /// - [title]: văn bản hiển thị ở giữa AppBar.
@@ -50,8 +50,9 @@ class AppBarWithBack extends StatelessWidget implements PreferredSizeWidget {
       elevation: elevation,
       leading: IconButton(
         icon: Icon(Icons.arrow_back_ios, color: textColor, size: 20),
-        onPressed: () =>
-            Navigator.canPop(context) && onBack != null ? goBack(context) : goHome(context),
+        onPressed: () => Navigator.canPop(context) && onBack != null
+            ? goBack(context)
+            : goHome(context),
       ),
       title: Text(
         title,

@@ -1,6 +1,6 @@
-import 'package:jt291_flutter_mobile/core/utils/either.dart';
-import 'package:jt291_flutter_mobile/domain/failures/failures.dart';
-import 'package:jt291_flutter_mobile/domain/repositories/matchmaking_repository.dart';
+import 'package:pp191225/core/utils/either.dart';
+import 'package:pp191225/domain/failures/failures.dart';
+import 'package:pp191225/domain/repositories/matchmaking_repository.dart';
 
 /// UseCase: Join a matched room
 /// Business logic: Must have a valid roomId
@@ -12,16 +12,12 @@ class JoinRoomUseCase {
   Future<Either<Failure, void>> call(String roomId) async {
     // Validation: roomId must not be empty
     if (roomId.isEmpty) {
-      return const Left(
-        ValidationFailure(message: 'Room ID is required'),
-      );
+      return const Left(ValidationFailure(message: 'Room ID is required'));
     }
 
     // Business rule: Must be connected to WebSocket
     if (!repository.isConnected) {
-      return const Left(
-        ValidationFailure(message: 'WebSocket not connected'),
-      );
+      return const Left(ValidationFailure(message: 'WebSocket not connected'));
     }
 
     return repository.joinRoom(roomId);

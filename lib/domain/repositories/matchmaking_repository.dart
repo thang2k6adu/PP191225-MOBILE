@@ -1,8 +1,8 @@
-import 'package:jt291_flutter_mobile/core/utils/either.dart';
-import 'package:jt291_flutter_mobile/domain/entities/matchmaking/match_data.dart';
-import 'package:jt291_flutter_mobile/domain/entities/matchmaking/matchmaking_response.dart';
-import 'package:jt291_flutter_mobile/domain/entities/matchmaking/matchmaking_status.dart';
-import 'package:jt291_flutter_mobile/domain/failures/failures.dart';
+import 'package:pp191225/core/utils/either.dart';
+import 'package:pp191225/domain/entities/matchmaking/match_data.dart';
+import 'package:pp191225/domain/entities/matchmaking/matchmaking_response.dart';
+import 'package:pp191225/domain/entities/matchmaking/matchmaking_status.dart';
+import 'package:pp191225/domain/failures/failures.dart';
 
 /// Repository interface for matchmaking
 /// Defines what operations can be performed

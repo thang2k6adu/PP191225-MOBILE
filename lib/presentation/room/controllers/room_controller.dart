@@ -1,14 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jt291_flutter_mobile/domain/usecases/room/get_room_info_usecase.dart';
-import 'package:jt291_flutter_mobile/domain/usecases/room/join_matchmaking_usecase.dart';
-import 'package:jt291_flutter_mobile/domain/usecases/room/leave_room_usecase.dart';
-import 'package:jt291_flutter_mobile/presentation/room/controllers/room_state.dart';
-import 'package:jt291_flutter_mobile/providers/usecases_provider.dart';
+import 'package:pp191225/domain/usecases/room/get_room_info_usecase.dart';
+import 'package:pp191225/domain/usecases/room/join_matchmaking_usecase.dart';
+import 'package:pp191225/domain/usecases/room/leave_room_usecase.dart';
+import 'package:pp191225/presentation/room/controllers/room_state.dart';
+import 'package:pp191225/providers/usecases_provider.dart';
 
 final roomControllerProvider =
-    AutoDisposeNotifierProvider<RoomController, RoomState>(
-  RoomController.new,
-);
+    AutoDisposeNotifierProvider<RoomController, RoomState>(RoomController.new);
 
 class RoomController extends AutoDisposeNotifier<RoomState> {
   late final JoinMatchmakingUseCase _joinMatchmakingUseCase;
@@ -30,10 +28,8 @@ class RoomController extends AutoDisposeNotifier<RoomState> {
     final result = await _joinMatchmakingUseCase();
 
     result.fold(
-      (failure) => state = state.copyWith(
-        isJoining: false,
-        error: failure.message,
-      ),
+      (failure) =>
+          state = state.copyWith(isJoining: false, error: failure.message),
       (room) => state = state.copyWith(
         isJoining: false,
         currentRoom: room,
@@ -49,10 +45,8 @@ class RoomController extends AutoDisposeNotifier<RoomState> {
     final result = await _getRoomInfoUseCase(roomId);
 
     result.fold(
-      (failure) => state = state.copyWith(
-        isLoading: false,
-        error: failure.message,
-      ),
+      (failure) =>
+          state = state.copyWith(isLoading: false, error: failure.message),
       (room) => state = state.copyWith(
         isLoading: false,
         currentRoom: room,
@@ -70,10 +64,8 @@ class RoomController extends AutoDisposeNotifier<RoomState> {
     final result = await _leaveRoomUseCase(state.currentRoom!.id);
 
     result.fold(
-      (failure) => state = state.copyWith(
-        isLeaving: false,
-        error: failure.message,
-      ),
+      (failure) =>
+          state = state.copyWith(isLeaving: false, error: failure.message),
       (_) => state = const RoomState(), // Reset state after leaving
     );
   }

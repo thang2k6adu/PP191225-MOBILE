@@ -8,13 +8,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.temp"
+    namespace = "com.thang2k6adu.pp191225"
     compileSdk = 36  // ✅ Should be fixed instead of taken from flutter.compileSdkVersion
 
     ndkVersion = "27.0.12077973" // ✅ Matches the latest NDK (if not used, you can delete this line)
 
     defaultConfig {
-        applicationId = "com.example.temp"
+        applicationId = "com.thang2k6adu.pp191225"
         minSdk = flutter.minSdkVersion       // ✅ Recommended for Firebase / Google Sign-In
         targetSdk = 36    // ✅ sync with compileSdk
         versionCode = flutter.versionCode

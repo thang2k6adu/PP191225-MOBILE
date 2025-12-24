@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jt291_flutter_mobile/core/core.dart';
-import 'package:jt291_flutter_mobile/presentation/auth/controllers/auth_controller.dart';
-import 'package:jt291_flutter_mobile/routers/app_router.dart';
+import 'package:pp191225/core/core.dart';
+import 'package:pp191225/presentation/auth/controllers/auth_controller.dart';
+import 'package:pp191225/routers/app_router.dart';
 
 class AppInitializer extends ConsumerStatefulWidget {
   final Widget child;

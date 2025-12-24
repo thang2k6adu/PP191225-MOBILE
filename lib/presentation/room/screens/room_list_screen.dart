@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jt291_flutter_mobile/presentation/room/controllers/room_controller.dart';
-import 'package:jt291_flutter_mobile/presentation/room/widgets/room_card.dart';
+import 'package:pp191225/presentation/room/controllers/room_controller.dart';
+import 'package:pp191225/presentation/room/widgets/room_card.dart';
 
 class RoomListScreen extends ConsumerWidget {
   const RoomListScreen({super.key});
@@ -33,10 +33,7 @@ class RoomListScreen extends ConsumerWidget {
               children: [
                 const Text(
                   'Select Task Type',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 ),
                 const SizedBox(height: 8),
                 Container(
@@ -136,8 +133,9 @@ class RoomListScreen extends ConsumerWidget {
                           width: 20,
                           child: CircularProgressIndicator(
                             strokeWidth: 2,
-                            valueColor:
-                                AlwaysStoppedAnimation<Color>(Colors.white),
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              Colors.white,
+                            ),
                           ),
                         )
                       : const Text(
@@ -183,11 +181,7 @@ class RoomListScreen extends ConsumerWidget {
                   color: Colors.white.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: const Icon(
-                  Icons.shuffle,
-                  color: Colors.white,
-                  size: 24,
-                ),
+                child: const Icon(Icons.shuffle, color: Colors.white, size: 24),
               ),
               const SizedBox(width: 12),
               const Expanded(
@@ -204,10 +198,7 @@ class RoomListScreen extends ConsumerWidget {
                     ),
                     Text(
                       'Find your focus partner',
-                      style: TextStyle(
-                        color: Colors.white70,
-                        fontSize: 14,
-                      ),
+                      style: TextStyle(color: Colors.white70, fontSize: 14),
                     ),
                   ],
                 ),
@@ -227,10 +218,7 @@ class RoomListScreen extends ConsumerWidget {
                     SizedBox(width: 4),
                     Text(
                       'Available',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                      ),
+                      style: TextStyle(color: Colors.white, fontSize: 12),
                     ),
                   ],
                 ),
@@ -264,7 +252,9 @@ class RoomListScreen extends ConsumerWidget {
               ),
               // Quick Join Button
               ElevatedButton(
-                onPressed: isLoading ? null : () => controller.joinMatchmaking(),
+                onPressed: isLoading
+                    ? null
+                    : () => controller.joinMatchmaking(),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white.withOpacity(0.9),
                   foregroundColor: const Color(0xFF6366F1),
@@ -280,15 +270,11 @@ class RoomListScreen extends ConsumerWidget {
                     ? const SizedBox(
                         height: 16,
                         width: 16,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                        ),
+                        child: CircularProgressIndicator(strokeWidth: 2),
                       )
                     : const Text(
                         'Quick Join',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                        ),
+                        style: TextStyle(fontWeight: FontWeight.w600),
                       ),
               ),
             ],

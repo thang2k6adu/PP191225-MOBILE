@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jt291_flutter_mobile/domain/entities/matchmaking/matchmaking_state.dart';
-import 'package:jt291_flutter_mobile/presentation/matchmaking/controllers/matchmaking_controller.dart';
-import 'package:jt291_flutter_mobile/presentation/matchmaking/widgets/idle_widget.dart';
-import 'package:jt291_flutter_mobile/presentation/matchmaking/widgets/in_room_widget.dart';
-import 'package:jt291_flutter_mobile/presentation/matchmaking/widgets/waiting_widget.dart';
-import 'package:jt291_flutter_mobile/providers/datasources_provider.dart';
+import 'package:pp191225/domain/entities/matchmaking/matchmaking_state.dart';
+import 'package:pp191225/presentation/matchmaking/controllers/matchmaking_controller.dart';
+import 'package:pp191225/presentation/matchmaking/widgets/idle_widget.dart';
+import 'package:pp191225/presentation/matchmaking/widgets/in_room_widget.dart';
+import 'package:pp191225/presentation/matchmaking/widgets/waiting_widget.dart';
+import 'package:pp191225/providers/datasources_provider.dart';
 
 class MatchmakingScreen extends ConsumerStatefulWidget {
   const MatchmakingScreen({super.key});
@@ -30,9 +30,7 @@ class _MatchmakingScreenState extends ConsumerState<MatchmakingScreen> {
     final token = await storage.read(key: 'access_token');
 
     if (token != null && token.isNotEmpty) {
-      await ref
-          .read(matchmakingControllerProvider.notifier)
-          .connect(token);
+      await ref.read(matchmakingControllerProvider.notifier).connect(token);
     } else {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -51,30 +49,21 @@ class _MatchmakingScreenState extends ConsumerState<MatchmakingScreen> {
     final state = ref.watch(matchmakingControllerProvider);
 
     // Show error snackbar
-    ref.listen(
-      matchmakingControllerProvider,
-      (previous, next) {
-        if (next.error != null && next.error!.isNotEmpty) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(next.error!),
-              backgroundColor: Colors.red,
-            ),
-          );
-          ref.read(matchmakingControllerProvider.notifier).clearError();
-        }
+    ref.listen(matchmakingControllerProvider, (previous, next) {
+      if (next.error != null && next.error!.isNotEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(next.error!), backgroundColor: Colors.red),
+        );
+        ref.read(matchmakingControllerProvider.notifier).clearError();
+      }
 
-        if (next.message != null && next.message!.isNotEmpty) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(next.message!),
-              backgroundColor: Colors.green,
-            ),
-          );
-          ref.read(matchmakingControllerProvider.notifier).clearMessage();
-        }
-      },
-    );
+      if (next.message != null && next.message!.isNotEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(next.message!), backgroundColor: Colors.green),
+        );
+        ref.read(matchmakingControllerProvider.notifier).clearMessage();
+      }
+    });
 
     return Scaffold(
       appBar: AppBar(
@@ -121,9 +110,7 @@ class _MatchmakingScreenState extends ConsumerState<MatchmakingScreen> {
           ),
         ],
       ),
-      body: SafeArea(
-        child: _buildBody(state),
-      ),
+      body: SafeArea(child: _buildBody(state)),
     );
   }
 
@@ -146,11 +133,7 @@ class _MatchmakingScreenState extends ConsumerState<MatchmakingScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(
-              Icons.cloud_off,
-              size: 64,
-              color: Colors.grey,
-            ),
+            const Icon(Icons.cloud_off, size: 64, color: Colors.grey),
             const SizedBox(height: 16),
             const Text('Not connected to matchmaking'),
             const SizedBox(height: 24),

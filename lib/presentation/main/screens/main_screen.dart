@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:jt291_flutter_mobile/core/constants/route_constants.dart';
-import 'package:jt291_flutter_mobile/core/theme/app_colors.dart';
-import 'package:jt291_flutter_mobile/presentation/auth/controllers/auth_controller.dart';
-import 'package:jt291_flutter_mobile/presentation/room/screens/room_list_screen.dart';
+import 'package:pp191225/core/constants/route_constants.dart';
+import 'package:pp191225/core/theme/app_colors.dart';
+import 'package:pp191225/presentation/auth/controllers/auth_controller.dart';
+import 'package:pp191225/presentation/room/screens/room_list_screen.dart';
 
 class MainScreen extends ConsumerStatefulWidget {
   const MainScreen({super.key});
@@ -24,7 +24,6 @@ class _MainScreenState extends ConsumerState<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    
     // TODO: Replace with your actual screens
     final List<Widget> children = [
       _buildHomeTab(context),
@@ -57,22 +56,13 @@ class _MainScreenState extends ConsumerState<MainScreen> {
         selectedItemColor: AppColors.primary,
         unselectedItemColor: Colors.grey,
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: "Search",
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
           BottomNavigationBarItem(
             icon: Icon(Icons.notifications),
             label: "Notifications",
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Profile",
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
         ],
       ),
     );
@@ -157,9 +147,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
           ),
         ),
         // Room List
-        const Expanded(
-          child: RoomListScreen(),
-        ),
+        const Expanded(child: RoomListScreen()),
       ],
     );
   }

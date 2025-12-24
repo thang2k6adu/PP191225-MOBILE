@@ -1,8 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jt291_flutter_mobile/core/core.dart';
-import 'package:jt291_flutter_mobile/presentation/auth/controllers/auth_controller.dart';
+import 'package:pp191225/core/core.dart';
+import 'package:pp191225/presentation/auth/controllers/auth_controller.dart';
 import 'package:intl/intl.dart';
 
 class SignUpScreen extends ConsumerStatefulWidget {
@@ -19,7 +19,7 @@ class SignUpScreenState extends ConsumerState<SignUpScreen> {
   final _birthDateController = TextEditingController();
   final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
-  
+
   bool _obscurePassword = true;
   String _selectedCountryCode = '+1';
 
@@ -42,15 +42,13 @@ class SignUpScreenState extends ConsumerState<SignUpScreen> {
       builder: (context, child) {
         return Theme(
           data: Theme.of(context).copyWith(
-            colorScheme: const ColorScheme. light(
-              primary: Color(0xFF4461F2),
-            ),
+            colorScheme: const ColorScheme.light(primary: Color(0xFF4461F2)),
           ),
           child: child!,
         );
       },
     );
-    
+
     if (picked != null) {
       setState(() {
         _birthDateController.text = DateFormat('dd/MM/yyyy').format(picked);
@@ -59,7 +57,7 @@ class SignUpScreenState extends ConsumerState<SignUpScreen> {
   }
 
   Future<void> _onRegister() async {
-    if (!_formKey.currentState!. validate()) return;
+    if (!_formKey.currentState!.validate()) return;
 
     final authController = ref.read(authControllerProvider.notifier);
     try {
@@ -72,7 +70,7 @@ class SignUpScreenState extends ConsumerState<SignUpScreen> {
       //   '$_selectedCountryCode${_phoneController.text}',
       //   _passwordController.text,
       // );
-      
+
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Registration successful!')),
@@ -153,11 +151,7 @@ class SignUpScreenState extends ConsumerState<SignUpScreen> {
         const SizedBox(height: 12),
         Text(
           'Create an account to continue! ',
-          style: TextStyle(
-            fontSize: 15,
-            color: Colors.grey[600],
-            height: 1.4,
-          ),
+          style: TextStyle(fontSize: 15, color: Colors.grey[600], height: 1.4),
         ),
       ],
     );
@@ -191,13 +185,14 @@ class SignUpScreenState extends ConsumerState<SignUpScreen> {
           _buildTextField(
             controller: _emailController,
             hintText: 'Loisbecket@gmail.com',
-            keyboardType: TextInputType. emailAddress,
+            keyboardType: TextInputType.emailAddress,
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter your email';
               }
-              if (!RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$")
-                  .hasMatch(value)) {
+              if (!RegExp(
+                r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$",
+              ).hasMatch(value)) {
                 return 'Please enter a valid email';
               }
               return null;
@@ -210,10 +205,10 @@ class SignUpScreenState extends ConsumerState<SignUpScreen> {
           const SizedBox(height: 8),
           _buildTextField(
             controller: _birthDateController,
-            hintText:  '18/03/2024',
+            hintText: '18/03/2024',
             readOnly: true,
             suffixIcon: Icons.calendar_today_outlined,
-            onTap:  () => _selectDate(context),
+            onTap: () => _selectDate(context),
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please select your birth date';
@@ -236,7 +231,9 @@ class SignUpScreenState extends ConsumerState<SignUpScreen> {
             controller: _passwordController,
             hintText: '••••••••',
             obscureText: _obscurePassword,
-            suffixIcon: _obscurePassword ?  Icons.visibility_off : Icons. visibility,
+            suffixIcon: _obscurePassword
+                ? Icons.visibility_off
+                : Icons.visibility,
             onSuffixIconTap: () {
               setState(() {
                 _obscurePassword = !_obscurePassword;
@@ -261,7 +258,7 @@ class SignUpScreenState extends ConsumerState<SignUpScreen> {
     return Text(
       text,
       style: TextStyle(
-        fontSize:  14,
+        fontSize: 14,
         fontWeight: FontWeight.w500,
         color: Colors.grey[700],
       ),
@@ -271,10 +268,10 @@ class SignUpScreenState extends ConsumerState<SignUpScreen> {
   Widget _buildTextField({
     required TextEditingController controller,
     required String hintText,
-    TextInputType?  keyboardType,
+    TextInputType? keyboardType,
     bool obscureText = false,
     bool readOnly = false,
-    IconData?  suffixIcon,
+    IconData? suffixIcon,
     VoidCallback? onTap,
     VoidCallback? onSuffixIconTap,
     String? Function(String?)? validator,
@@ -287,12 +284,9 @@ class SignUpScreenState extends ConsumerState<SignUpScreen> {
       onTap: onTap,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: TextStyle(
-          color: Colors.grey[400],
-          fontSize: 15,
-        ),
+        hintStyle: TextStyle(color: Colors.grey[400], fontSize: 15),
         filled: true,
-        fillColor:  Colors.grey[50],
+        fillColor: Colors.grey[50],
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(color: Colors.grey[300]!),
@@ -302,7 +296,7 @@ class SignUpScreenState extends ConsumerState<SignUpScreen> {
           borderSide: BorderSide(color: Colors.grey[300]!),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius:  BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(color: Color(0xFF4461F2), width: 2),
         ),
         errorBorder: OutlineInputBorder(
@@ -315,11 +309,7 @@ class SignUpScreenState extends ConsumerState<SignUpScreen> {
         ),
         suffixIcon: suffixIcon != null
             ? IconButton(
-                icon: Icon(
-                  suffixIcon,
-                  color:  Colors.grey[400],
-                  size: 20,
-                ),
+                icon: Icon(suffixIcon, color: Colors.grey[400], size: 20),
                 onPressed: onSuffixIconTap,
               )
             : null,
@@ -334,26 +324,23 @@ class SignUpScreenState extends ConsumerState<SignUpScreen> {
       keyboardType: TextInputType.phone,
       decoration: InputDecoration(
         hintText: '(454) 726-0592',
-        hintStyle: TextStyle(
-          color: Colors. grey[400],
-          fontSize:  15,
-        ),
+        hintStyle: TextStyle(color: Colors.grey[400], fontSize: 15),
         filled: true,
         fillColor: Colors.grey[50],
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.grey[300]! ),
+          borderSide: BorderSide(color: Colors.grey[300]!),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.grey[300]! ),
+          borderSide: BorderSide(color: Colors.grey[300]!),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(color: Color(0xFF4461F2), width: 2),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius. circular(12),
+          borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(color: Colors.red),
         ),
         contentPadding: const EdgeInsets.symmetric(
@@ -363,20 +350,17 @@ class SignUpScreenState extends ConsumerState<SignUpScreen> {
         prefixIcon: Container(
           padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Row(
-            mainAxisSize: MainAxisSize. min,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 width: 32,
                 height: 24,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
-                  color: Colors. red,
+                  color: Colors.red,
                 ),
-                child:  const Center(
-                  child: Text(
-                    '🇩🇰',
-                    style: TextStyle(fontSize: 16),
-                  ),
+                child: const Center(
+                  child: Text('🇩🇰', style: TextStyle(fontSize: 16)),
                 ),
               ),
               const SizedBox(width: 8),
@@ -398,9 +382,9 @@ class SignUpScreenState extends ConsumerState<SignUpScreen> {
     return SizedBox(
       width: double.infinity,
       height: 56,
-      child:  ElevatedButton(
+      child: ElevatedButton(
         onPressed: _onRegister,
-        style: ElevatedButton. styleFrom(
+        style: ElevatedButton.styleFrom(
           backgroundColor: const Color(0xFF4461F2),
           foregroundColor: Colors.white,
           shape: RoundedRectangleBorder(
@@ -410,10 +394,7 @@ class SignUpScreenState extends ConsumerState<SignUpScreen> {
         ),
         child: const Text(
           'Register',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
       ),
     );
@@ -425,16 +406,13 @@ class SignUpScreenState extends ConsumerState<SignUpScreen> {
         textAlign: TextAlign.center,
         text: TextSpan(
           text: 'Already have an account?    ',
-          style: TextStyle(
-            color: Colors.grey[600],
-            fontSize: 14,
-          ),
+          style: TextStyle(color: Colors.grey[600], fontSize: 14),
           children: [
             TextSpan(
               text: 'Login',
               style: const TextStyle(
                 color: Color(0xFF4461F2),
-                fontWeight: FontWeight. w600,
+                fontWeight: FontWeight.w600,
                 fontSize: 14,
               ),
               recognizer: TapGestureRecognizer()

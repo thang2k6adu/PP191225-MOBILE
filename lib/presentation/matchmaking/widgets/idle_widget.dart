@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jt291_flutter_mobile/presentation/matchmaking/controllers/matchmaking_controller.dart';
+import 'package:pp191225/presentation/matchmaking/controllers/matchmaking_controller.dart';
 
 class IdleWidget extends ConsumerWidget {
   const IdleWidget({super.key});
@@ -34,9 +34,9 @@ class IdleWidget extends ConsumerWidget {
             // Title
             Text(
               'Ready to Play?',
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
@@ -44,9 +44,9 @@ class IdleWidget extends ConsumerWidget {
             // Description
             Text(
               'Find an opponent and start a new game',
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Colors.grey[600],
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyLarge?.copyWith(color: Colors.grey[600]),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 48),
@@ -69,8 +69,9 @@ class IdleWidget extends ConsumerWidget {
                         height: 20,
                         child: CircularProgressIndicator(
                           strokeWidth: 2,
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Colors.white),
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            Colors.white,
+                          ),
                         ),
                       )
                     : const Icon(Icons.search),

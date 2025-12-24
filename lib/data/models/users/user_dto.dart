@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jt291_flutter_mobile/domain/entities/users/user.dart';
+import 'package:pp191225/domain/entities/users/user.dart';
 
 part 'user_dto.freezed.dart';
 part 'user_dto.g.dart';
@@ -23,13 +23,7 @@ abstract class UserDto with _$UserDto {
 
   /// Convert DTO to Domain Entity
   User toEntity() {
-    return User(
-      id: id,
-      email: email,
-      name: name,
-      avatar: avatar,
-      role: role,
-    );
+    return User(id: id, email: email, name: name, avatar: avatar, role: role);
   }
 }
 

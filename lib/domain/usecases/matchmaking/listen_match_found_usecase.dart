@@ -1,5 +1,5 @@
-import 'package:jt291_flutter_mobile/domain/entities/matchmaking/match_data.dart';
-import 'package:jt291_flutter_mobile/domain/repositories/matchmaking_repository.dart';
+import 'package:pp191225/domain/entities/matchmaking/match_data.dart';
+import 'package:pp191225/domain/repositories/matchmaking_repository.dart';
 
 /// UseCase: Listen to match found events
 /// Returns a stream of match data when a match is found
@@ -12,12 +12,16 @@ class ListenMatchFoundUseCase {
     print('[ListenMatchFoundUseCase] Creating stream...');
     return repository.onMatchFound
         .where((either) {
-          print('[ListenMatchFoundUseCase] Received either, isRight: ${either.isRight}');
+          print(
+            '[ListenMatchFoundUseCase] Received either, isRight: ${either.isRight}',
+          );
           return either.isRight;
         })
         .map((either) {
           final data = either.right;
-          print('[ListenMatchFoundUseCase] Mapped to MatchData: roomId=${data.roomId}');
+          print(
+            '[ListenMatchFoundUseCase] Mapped to MatchData: roomId=${data.roomId}',
+          );
           return data;
         });
   }

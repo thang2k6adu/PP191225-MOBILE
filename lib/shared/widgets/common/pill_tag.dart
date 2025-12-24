@@ -1,6 +1,6 @@
 // Pill tag with thumbnail and label (e.g., "Art")
 import 'package:flutter/material.dart';
-import 'package:jt291_flutter_mobile/core/theme/app_colors.dart';
+import 'package:pp191225/core/theme/app_colors.dart';
 
 /// Pill tag có thumbnail nhỏ ở trái, label ở phải, border nhẹ.
 /// - [thumbnail]: widget nhỏ ở trái (Image, Icon, Container...)
@@ -27,11 +27,12 @@ class PillTag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle effectiveTextStyle = textStyle ??
-        Theme.of(context)
-            .textTheme
-            .bodySmall!
-            .copyWith(color: Colors.black, fontWeight: FontWeight.w500);
+    final TextStyle effectiveTextStyle =
+        textStyle ??
+        Theme.of(context).textTheme.bodySmall!.copyWith(
+          color: Colors.black,
+          fontWeight: FontWeight.w500,
+        );
     return Container(
       padding: padding,
       decoration: BoxDecoration(
@@ -43,7 +44,14 @@ class PillTag extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           // thumbnail should be compact
-          SizedBox(width: 20, height: 20, child: ClipRRect(borderRadius: BorderRadius.circular(6), child: thumbnail)),
+          SizedBox(
+            width: 20,
+            height: 20,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(6),
+              child: thumbnail,
+            ),
+          ),
           const SizedBox(width: 8),
           Text(label, style: effectiveTextStyle),
         ],

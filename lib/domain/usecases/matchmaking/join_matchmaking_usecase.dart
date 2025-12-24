@@ -1,7 +1,7 @@
-import 'package:jt291_flutter_mobile/core/utils/either.dart';
-import 'package:jt291_flutter_mobile/domain/entities/matchmaking/matchmaking_response.dart';
-import 'package:jt291_flutter_mobile/domain/failures/failures.dart';
-import 'package:jt291_flutter_mobile/domain/repositories/matchmaking_repository.dart';
+import 'package:pp191225/core/utils/either.dart';
+import 'package:pp191225/domain/entities/matchmaking/matchmaking_response.dart';
+import 'package:pp191225/domain/failures/failures.dart';
+import 'package:pp191225/domain/repositories/matchmaking_repository.dart';
 
 /// UseCase: Join matchmaking queue
 /// Business logic: Must be connected to WebSocket first

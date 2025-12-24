@@ -1,7 +1,7 @@
 // base_paginated_notifier.dart
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jt291_flutter_mobile/data/models/base/api_response.dart';
+import 'package:pp191225/data/models/base/api_response.dart';
 
 /// Response wrapper for paginated API calls
 class CachedPage<T> {
@@ -171,7 +171,7 @@ abstract class BasePaginatedNotifier<T> extends AsyncNotifier<List<T>> {
     _isBackgroundFetching = true;
 
     final initialState = state;
-    
+
     try {
       final response = await fetchPage(
         page: reset ? 1 : _page,
@@ -187,8 +187,8 @@ abstract class BasePaginatedNotifier<T> extends AsyncNotifier<List<T>> {
       if (state == initialState) {
         state = AsyncData(updatedList);
       }
-        // state = AsyncData(updatedList);
-      
+      // state = AsyncData(updatedList);
+
       // Always update cache
       _cache[cacheKey] = CachedPage(
         data: updatedList,
@@ -230,10 +230,10 @@ abstract class BasePaginatedNotifier<T> extends AsyncNotifier<List<T>> {
   // --- Getters ---
   /// Check xem có đang loading (bao gồm cả background fetch)
   bool get isLoadingMore => _isLoadingMore || _isBackgroundFetching;
-  
+
   /// Check xem đang fetch ở background không
   bool get isBackgroundFetching => _isBackgroundFetching;
-  
+
   bool get hasNext => _hasNext;
   int get currentPage => _page;
   String? get searchQuery => _search;
@@ -254,7 +254,7 @@ mixin ListItemUpdateMixin<T> on AsyncNotifier<List<T>> {
     }).toList();
 
     state = AsyncData(updatedList);
-    
+
     // Update cache if this is a paginated notifier
     if (this is BasePaginatedNotifier) {
       (this as BasePaginatedNotifier).updateCacheWithCurrentState();
@@ -287,7 +287,7 @@ mixin ListItemUpdateMixin<T> on AsyncNotifier<List<T>> {
 
     // 5) Set state
     state = AsyncData(updatedList);
-    
+
     // 6) Update cache if this is a paginated notifier
     if (this is BasePaginatedNotifier) {
       (this as BasePaginatedNotifier).updateCacheWithCurrentState();

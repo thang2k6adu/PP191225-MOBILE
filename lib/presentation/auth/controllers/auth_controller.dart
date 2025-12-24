@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jt291_flutter_mobile/core/constants/constants.dart';
-import 'package:jt291_flutter_mobile/shared/components.dart';
-import 'package:jt291_flutter_mobile/domain/entities/users/user.dart';
-import 'package:jt291_flutter_mobile/domain/usecases/auth/login_with_provider_usecase.dart';
-import 'package:jt291_flutter_mobile/domain/usecases/auth/login_with_password_usecase.dart';
-import 'package:jt291_flutter_mobile/domain/usecases/auth/logout_usecase.dart';
-import 'package:jt291_flutter_mobile/domain/usecases/auth/login_usecase.dart';
-import 'package:jt291_flutter_mobile/providers/usecases_provider.dart';
+import 'package:pp191225/core/constants/constants.dart';
+import 'package:pp191225/shared/components.dart';
+import 'package:pp191225/domain/entities/users/user.dart';
+import 'package:pp191225/domain/usecases/auth/login_with_provider_usecase.dart';
+import 'package:pp191225/domain/usecases/auth/login_with_password_usecase.dart';
+import 'package:pp191225/domain/usecases/auth/logout_usecase.dart';
+import 'package:pp191225/domain/usecases/auth/login_usecase.dart';
+import 'package:pp191225/providers/usecases_provider.dart';
 
 class AuthController extends AutoDisposeNotifier<User?> {
   late final LoginWithProviderUseCase _loginWithProviderUseCase;
@@ -33,10 +33,10 @@ class AuthController extends AutoDisposeNotifier<User?> {
     String password,
   ) async {
     final overlay = UOverlay(context);
-    
+
     try {
       overlay.show(message: "Đang đăng nhập...", loading: true);
-      
+
       final result = await _loginWithPasswordUseCase(
         username: username,
         password: password,
@@ -44,11 +44,13 @@ class AuthController extends AutoDisposeNotifier<User?> {
 
       result.fold(
         (failure) {
-          overlay.showWithTimeout(message: "Đăng nhập thất bại: ${failure.message}");
+          overlay.showWithTimeout(
+            message: "Đăng nhập thất bại: ${failure.message}",
+          );
         },
         (authResponse) async {
           state = authResponse.user;
-          
+
           overlay.showWithTimeout(message: "Đăng nhập thành công");
           await Future.delayed(const Duration(milliseconds: 500));
 
@@ -72,22 +74,21 @@ class AuthController extends AutoDisposeNotifier<User?> {
     String password,
   ) async {
     final overlay = UOverlay(context);
-    
+
     try {
       overlay.show(message: "Đang đăng nhập...", loading: true);
 
-      final result = await _loginUseCase(
-        email: email,
-        password: password,
-      );
+      final result = await _loginUseCase(email: email, password: password);
 
       result.fold(
         (failure) {
-          overlay.showWithTimeout(message: "Đăng nhập thất bại: ${failure.message}");
+          overlay.showWithTimeout(
+            message: "Đăng nhập thất bại: ${failure.message}",
+          );
         },
         (authResponse) async {
           state = authResponse.user;
-          
+
           overlay.showWithTimeout(message: "Đăng nhập thành công");
           await Future.delayed(const Duration(milliseconds: 500));
 
@@ -110,19 +111,21 @@ class AuthController extends AutoDisposeNotifier<User?> {
     ProviderLogin provider,
   ) async {
     final overlay = UOverlay(context);
-    
+
     try {
       overlay.show(message: "Đang đăng nhập...", loading: true);
-      
+
       final result = await _loginWithProviderUseCase(provider);
 
       result.fold(
         (failure) {
-          overlay.showWithTimeout(message: "Đăng nhập thất bại: ${failure.message}");
+          overlay.showWithTimeout(
+            message: "Đăng nhập thất bại: ${failure.message}",
+          );
         },
         (authResponse) async {
           state = authResponse.user;
-          
+
           overlay.showWithTimeout(message: "Đăng nhập thành công");
           await Future.delayed(const Duration(milliseconds: 500));
 
@@ -142,19 +145,21 @@ class AuthController extends AutoDisposeNotifier<User?> {
 
   Future<void> logout(BuildContext context) async {
     final overlay = UOverlay(context);
-    
+
     try {
       overlay.show(message: "Đang đăng xuất...", loading: true);
-      
+
       final result = await _logoutUseCase();
 
       result.fold(
         (failure) {
-          overlay.showWithTimeout(message: "Đăng xuất thất bại: ${failure.message}");
+          overlay.showWithTimeout(
+            message: "Đăng xuất thất bại: ${failure.message}",
+          );
         },
         (_) async {
           state = null;
-          
+
           overlay.showWithTimeout(message: "Đăng xuất thành công");
           await Future.delayed(const Duration(milliseconds: 500));
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jt291_flutter_mobile/data/models/room/room_status.dart';
-import 'package:jt291_flutter_mobile/domain/entities/room/room.dart';
+import 'package:pp191225/data/models/room/room_status.dart';
+import 'package:pp191225/domain/entities/room/room.dart';
 
 class RoomCard extends StatelessWidget {
   final Room room;
@@ -38,11 +38,7 @@ class RoomCard extends StatelessWidget {
                   color: _getIconColor().withOpacity(0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Icon(
-                  _getIcon(),
-                  color: _getIconColor(),
-                  size: 24,
-                ),
+                child: Icon(_getIcon(), color: _getIconColor(), size: 24),
               ),
               const SizedBox(width: 16),
 
@@ -76,11 +72,7 @@ class RoomCard extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Icon(
-                        Icons.people,
-                        size: 16,
-                        color: Colors.grey.shade600,
-                      ),
+                      Icon(Icons.people, size: 16, color: Colors.grey.shade600),
                       const SizedBox(width: 4),
                       Text(
                         '${room.currentMemberCount}/${room.maxMembers}',

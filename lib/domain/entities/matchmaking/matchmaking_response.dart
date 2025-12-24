@@ -1,4 +1,4 @@
-import 'package:jt291_flutter_mobile/domain/entities/matchmaking/match_data.dart';
+import 'package:pp191225/domain/entities/matchmaking/match_data.dart';
 
 /// Matchmaking response entity
 class MatchmakingResponse {

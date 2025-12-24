@@ -195,7 +195,7 @@ The app will automatically load `.env` on startup. All API endpoints are managed
 
 ```dart
 // Access in code
-import 'package:jt291_flutter_mobile/core/constants/constants.dart';
+import 'package:pp191225/core/constants/constants.dart';
 
 final baseUrl = ApiConstants.baseUrl;        // from .env
 final endpoint = ApiEndpoints.authLogin;     // '/auth/login'

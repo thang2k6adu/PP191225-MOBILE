@@ -7,17 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:505088829368:android:2d0f6e64ab486b3bb5d14d",
+        "mobilesdk_app_id": "1:505088829368:android:7f636180243b50ceb5d14d",
         "android_client_info": {
-          "package_name": "com.example.temp"
+          "package_name": "com.thang2k6adu.pp191225"
         }
       },
       "oauth_client": [
         {
-          "client_id": "505088829368-rk46po2jtil1mj7jirb4hkmgci90kea1.apps.googleusercontent.com",
+          "client_id": "505088829368-ovk2q681dlj2akm9u0rsh4emgc65plug.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.temp",
+            "package_name": "com.thang2k6adu.pp191225",
             "certificate_hash": "c653b2054c93d9cdb0e3682b79eccf504805a0b8"
           }
         },
@@ -39,10 +39,10 @@
               "client_type": 3
             },
             {
-              "client_id": "505088829368-q9dm7b7llkoh22ojd95g19p8g01hugs1.apps.googleusercontent.com",
+              "client_id": "505088829368-c0b67cid4q8qll7ebksagqhak33938sf.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.temp"
+                "bundle_id": "com.thang2k6adu.pp191225"
               }
             }
           ]

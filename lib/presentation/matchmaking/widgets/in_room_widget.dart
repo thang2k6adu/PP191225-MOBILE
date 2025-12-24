@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jt291_flutter_mobile/domain/entities/matchmaking/match_data.dart';
-import 'package:jt291_flutter_mobile/presentation/matchmaking/controllers/matchmaking_controller.dart';
+import 'package:pp191225/domain/entities/matchmaking/match_data.dart';
+import 'package:pp191225/presentation/matchmaking/controllers/matchmaking_controller.dart';
 
 class InRoomWidget extends ConsumerWidget {
   final MatchData? matchData;
 
-  const InRoomWidget({
-    super.key,
-    required this.matchData,
-  });
+  const InRoomWidget({super.key, required this.matchData});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     if (matchData == null) {
-      return const Center(
-        child: Text('No match data available'),
-      );
+      return const Center(child: Text('No match data available'));
     }
 
     return Center(
@@ -45,9 +40,9 @@ class InRoomWidget extends ConsumerWidget {
             Text(
               'Match Found!',
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.green,
-                  ),
+                fontWeight: FontWeight.bold,
+                color: Colors.green,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
@@ -59,10 +54,7 @@ class InRoomWidget extends ConsumerWidget {
               decoration: BoxDecoration(
                 color: Colors.grey[100],
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(
-                  color: Colors.grey[300]!,
-                  width: 1,
-                ),
+                border: Border.all(color: Colors.grey[300]!, width: 1),
               ),
               child: Column(
                 children: [
@@ -121,10 +113,7 @@ class InRoomWidget extends ConsumerWidget {
                       const SizedBox(width: 8),
                       const Text(
                         'Room ID:',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey,
-                        ),
+                        style: TextStyle(fontSize: 12, color: Colors.grey),
                       ),
                       const SizedBox(width: 8),
                       Expanded(
@@ -160,10 +149,7 @@ class InRoomWidget extends ConsumerWidget {
                 icon: const Icon(Icons.play_arrow),
                 label: const Text(
                   'Start Game',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                 ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
@@ -181,27 +167,19 @@ class InRoomWidget extends ConsumerWidget {
               height: 56,
               child: OutlinedButton.icon(
                 onPressed: () {
-                  ref
-                      .read(matchmakingControllerProvider.notifier)
-                      .leaveRoom();
+                  ref.read(matchmakingControllerProvider.notifier).leaveRoom();
                 },
                 icon: const Icon(Icons.exit_to_app),
                 label: const Text(
                   'Leave Room',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                 ),
                 style: OutlinedButton.styleFrom(
                   foregroundColor: Colors.red,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  side: const BorderSide(
-                    color: Colors.red,
-                    width: 2,
-                  ),
+                  side: const BorderSide(color: Colors.red, width: 2),
                 ),
               ),
             ),

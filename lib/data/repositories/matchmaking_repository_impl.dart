@@ -1,14 +1,14 @@
 import 'dart:async';
-import 'package:jt291_flutter_mobile/core/utils/either.dart';
-import 'package:jt291_flutter_mobile/data/datasources/remote/matchmaking_remote_datasource.dart';
-import 'package:jt291_flutter_mobile/data/models/matchmaking/match_found_dto.dart';
-import 'package:jt291_flutter_mobile/domain/entities/matchmaking/match_data.dart';
-import 'package:jt291_flutter_mobile/domain/entities/matchmaking/matchmaking_response.dart';
-import 'package:jt291_flutter_mobile/domain/entities/matchmaking/matchmaking_state.dart';
-import 'package:jt291_flutter_mobile/domain/entities/matchmaking/matchmaking_status.dart';
-import 'package:jt291_flutter_mobile/domain/entities/matchmaking/room_info.dart';
-import 'package:jt291_flutter_mobile/domain/failures/failures.dart';
-import 'package:jt291_flutter_mobile/domain/repositories/matchmaking_repository.dart';
+import 'package:pp191225/core/utils/either.dart';
+import 'package:pp191225/data/datasources/remote/matchmaking_remote_datasource.dart';
+import 'package:pp191225/data/models/matchmaking/match_found_dto.dart';
+import 'package:pp191225/domain/entities/matchmaking/match_data.dart';
+import 'package:pp191225/domain/entities/matchmaking/matchmaking_response.dart';
+import 'package:pp191225/domain/entities/matchmaking/matchmaking_state.dart';
+import 'package:pp191225/domain/entities/matchmaking/matchmaking_status.dart';
+import 'package:pp191225/domain/entities/matchmaking/room_info.dart';
+import 'package:pp191225/domain/failures/failures.dart';
+import 'package:pp191225/domain/repositories/matchmaking_repository.dart';
 
 /// Repository implementation for matchmaking
 /// ZERO business logic - only calls datasource and maps DTO to Entity
@@ -69,7 +69,9 @@ class MatchmakingRepositoryImpl implements MatchmakingRepository {
   Stream<Either<Failure, MatchData>> get onMatchFound {
     print('[MatchmakingRepository] onMatchFound stream accessed');
     return remoteDataSource.onMatchFound.map((dto) {
-      print('[MatchmakingRepository] Received DTO from data source: roomId=${dto.roomId}');
+      print(
+        '[MatchmakingRepository] Received DTO from data source: roomId=${dto.roomId}',
+      );
       try {
         final entity = _mapToMatchData(dto);
         print('[MatchmakingRepository] Mapped to entity successfully');

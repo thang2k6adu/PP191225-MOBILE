@@ -1,8 +1,8 @@
-import 'package:jt291_flutter_mobile/core/utils/either.dart';
-import 'package:jt291_flutter_mobile/data/services/firebase_auth_service.dart';
-import 'package:jt291_flutter_mobile/domain/entities/auth/auth_response.dart';
-import 'package:jt291_flutter_mobile/domain/failures/failures.dart';
-import 'package:jt291_flutter_mobile/domain/repositories/auth_repository.dart';
+import 'package:pp191225/core/utils/either.dart';
+import 'package:pp191225/data/services/firebase_auth_service.dart';
+import 'package:pp191225/domain/entities/auth/auth_response.dart';
+import 'package:pp191225/domain/failures/failures.dart';
+import 'package:pp191225/domain/repositories/auth_repository.dart';
 
 class LoginWithPasswordUseCase {
   final AuthRepository repository;
@@ -29,13 +29,10 @@ class LoginWithPasswordUseCase {
 
       final authResult = await repository.loginWithFirebase(idToken: idToken);
 
-      return authResult.fold(
-        (failure) => Left(failure),
-        (authResponse) async {
-          await repository.saveTokens(authResponse.tokens);
-          return Right(authResponse);
-        },
-      );
+      return authResult.fold((failure) => Left(failure), (authResponse) async {
+        await repository.saveTokens(authResponse.tokens);
+        return Right(authResponse);
+      });
     } catch (e) {
       return Left(ServerFailure(message: e.toString()));
     }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jt291_flutter_mobile/presentation/matchmaking/controllers/matchmaking_controller.dart';
+import 'package:pp191225/presentation/matchmaking/controllers/matchmaking_controller.dart';
 
 class WaitingWidget extends ConsumerWidget {
   const WaitingWidget({super.key});
@@ -41,9 +41,9 @@ class WaitingWidget extends ConsumerWidget {
             // Title
             Text(
               'Finding Opponent...',
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
@@ -51,9 +51,9 @@ class WaitingWidget extends ConsumerWidget {
             // Description
             Text(
               'Please wait while we find a match for you',
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Colors.grey[600],
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyLarge?.copyWith(color: Colors.grey[600]),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 48),
@@ -73,10 +73,7 @@ class WaitingWidget extends ConsumerWidget {
                 icon: const Icon(Icons.close),
                 label: const Text(
                   'Cancel',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                 ),
                 style: OutlinedButton.styleFrom(
                   shape: RoundedRectangleBorder(

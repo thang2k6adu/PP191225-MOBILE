@@ -1,12 +1,12 @@
 import 'dart:async';
-import 'package:jt291_flutter_mobile/data/datasources/remote/matchmaking_remote_datasource.dart';
-import 'package:jt291_flutter_mobile/data/models/base/api_response.dart';
-import 'package:jt291_flutter_mobile/data/models/matchmaking/match_found_dto.dart';
-import 'package:jt291_flutter_mobile/data/models/matchmaking/matchmaking_response_dto.dart';
-import 'package:jt291_flutter_mobile/data/models/matchmaking/matchmaking_status_dto.dart';
-import 'package:jt291_flutter_mobile/data/models/matchmaking/opponent_event_dto.dart';
-import 'package:jt291_flutter_mobile/data/models/matchmaking/room_event_dto.dart';
-import 'package:jt291_flutter_mobile/data/services/api_service.dart';
+import 'package:pp191225/data/datasources/remote/matchmaking_remote_datasource.dart';
+import 'package:pp191225/data/models/base/api_response.dart';
+import 'package:pp191225/data/models/matchmaking/match_found_dto.dart';
+import 'package:pp191225/data/models/matchmaking/matchmaking_response_dto.dart';
+import 'package:pp191225/data/models/matchmaking/matchmaking_status_dto.dart';
+import 'package:pp191225/data/models/matchmaking/opponent_event_dto.dart';
+import 'package:pp191225/data/models/matchmaking/room_event_dto.dart';
+import 'package:pp191225/data/services/api_service.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class MatchmakingRemoteDataSourceImpl implements MatchmakingRemoteDataSource {
@@ -17,7 +17,8 @@ class MatchmakingRemoteDataSourceImpl implements MatchmakingRemoteDataSource {
   final _matchFoundController = StreamController<MatchFoundDto>.broadcast();
   final _opponentDisconnectedController =
       StreamController<OpponentEventDto>.broadcast();
-  final _opponentLeftController = StreamController<OpponentEventDto>.broadcast();
+  final _opponentLeftController =
+      StreamController<OpponentEventDto>.broadcast();
   final _roomJoinedController = StreamController<RoomEventDto>.broadcast();
   final _roomLeftController = StreamController<RoomEventDto>.broadcast();
   final _errorController = StreamController<String>.broadcast();
@@ -30,8 +31,7 @@ class MatchmakingRemoteDataSourceImpl implements MatchmakingRemoteDataSource {
     final response = await apiService.dio.post('/matchmaking/join');
     final parsed = ApiResponse<MatchmakingResponseDto>.fromJson(
       response.data,
-      (data) =>
-          MatchmakingResponseDto.fromJson(data as Map<String, dynamic>),
+      (data) => MatchmakingResponseDto.fromJson(data as Map<String, dynamic>),
     );
     return parsed.data!;
   }
@@ -84,14 +84,20 @@ class MatchmakingRemoteDataSourceImpl implements MatchmakingRemoteDataSource {
       print('[Matchmaking WebSocket] ========================================');
       print('[Matchmaking WebSocket] MATCH_FOUND EVENT RECEIVED!');
       print('[Matchmaking WebSocket] Raw data: $data');
-      print('[Matchmaking WebSocket] Stream has listeners: ${_matchFoundController.hasListener}');
+      print(
+        '[Matchmaking WebSocket] Stream has listeners: ${_matchFoundController.hasListener}',
+      );
       try {
         final dto = MatchFoundDto.fromJson(data as Map<String, dynamic>);
-        print('[Matchmaking WebSocket] Parsed DTO: roomId=${dto.roomId}, opponent=${dto.opponentName}');
+        print(
+          '[Matchmaking WebSocket] Parsed DTO: roomId=${dto.roomId}, opponent=${dto.opponentName}',
+        );
         print('[Matchmaking WebSocket] Adding to stream controller...');
         _matchFoundController.add(dto);
         print('[Matchmaking WebSocket] Event added to stream successfully');
-        print('[Matchmaking WebSocket] ========================================');
+        print(
+          '[Matchmaking WebSocket] ========================================',
+        );
       } catch (e) {
         print('[Matchmaking WebSocket] ERROR parsing match_found: $e');
         print('[Matchmaking WebSocket] Stack trace: ${StackTrace.current}');
@@ -177,7 +183,9 @@ class MatchmakingRemoteDataSourceImpl implements MatchmakingRemoteDataSource {
   // Stream getters
   @override
   Stream<MatchFoundDto> get onMatchFound {
-    print('[Matchmaking DataSource] onMatchFound stream accessed, hasListener: ${_matchFoundController.hasListener}');
+    print(
+      '[Matchmaking DataSource] onMatchFound stream accessed, hasListener: ${_matchFoundController.hasListener}',
+    );
     return _matchFoundController.stream;
   }
 
