@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:jt291_flutter_mobile/core/core.dart';
 
@@ -9,6 +10,7 @@ class FirebaseAuthService {
   User? get currentFirebaseUser => _auth.currentUser;
 
   final GoogleSignIn _gsi = GoogleSignIn.instance;
+  final FacebookAuth _facebookAuth = FacebookAuth.instance;
 
   final String webClientId = ApiConstants.webClientId;
 
@@ -46,6 +48,37 @@ class FirebaseAuthService {
       throw Exception('Google Sign-In failed: $e');
     } catch (e) {
       throw Exception('Unexpected Google Sign-In error: $e');
+    }
+  }
+
+  Future<String?> signInWithFacebook() async {
+    try {
+      // Trigger Facebook login
+      final LoginResult result = await _facebookAuth.login();
+
+      // Check if login was successful
+      if (result.status != LoginStatus.success) {
+        return null;
+      }
+
+      // Get the access token
+      final AccessToken? accessToken = result.accessToken;
+      if (accessToken == null) return null;
+
+      // Create Firebase credential from Facebook token
+      final credential = FacebookAuthProvider.credential(
+        accessToken.tokenString,
+      );
+
+      // Sign in to Firebase with the credential
+      final userCred = await FirebaseAuth.instance.signInWithCredential(
+        credential,
+      );
+
+      // Return Firebase ID token
+      return await userCred.user?.getIdToken(true);
+    } catch (e) {
+      throw Exception('Facebook Sign-In failed: $e');
     }
   }
 
@@ -100,14 +133,17 @@ class FirebaseAuthService {
     }
   }
 
-  /// Sign out from Firebase and Google
+  /// Sign out from Firebase, Google, and Facebook
   Future<void> signOut() async {
     try {
       // Sign out from Firebase
       await _auth.signOut();
-      
+
       // Sign out from Google
       await _gsi.signOut();
+
+      // Sign out from Facebook
+      await _facebookAuth.logOut();
     } catch (e) {
       throw Exception('Đăng xuất thất bại: $e');
     }

@@ -1,37 +1,45 @@
 {
   "project_info": {
-    "project_number": "1043002656610",
-    "project_id": "pp191225-2a125",
-    "storage_bucket": "pp191225-2a125.firebasestorage.app"
+    "project_number": "505088829368",
+    "project_id": "pp191225-53185",
+    "storage_bucket": "pp191225-53185.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1043002656610:android:aaf903d54a4a0317598e3b",
+        "mobilesdk_app_id": "1:505088829368:android:2d0f6e64ab486b3bb5d14d",
         "android_client_info": {
           "package_name": "com.example.temp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1043002656610-54j3os8ouj4njbns21itksp7a867sd3h.apps.googleusercontent.com",
+          "client_id": "505088829368-rk46po2jtil1mj7jirb4hkmgci90kea1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.temp",
+            "certificate_hash": "c653b2054c93d9cdb0e3682b79eccf504805a0b8"
+          }
+        },
+        {
+          "client_id": "505088829368-89qo83qbccr6epg5e3go06nonfn7c9fh.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBGdWXWo2_ArHBMCn87713JefT1oYbdupI"
+          "current_key": "AIzaSyBQAtIOAPsvjSc4WtVmeEtp1RsictAcGdU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1043002656610-54j3os8ouj4njbns21itksp7a867sd3h.apps.googleusercontent.com",
+              "client_id": "505088829368-89qo83qbccr6epg5e3go06nonfn7c9fh.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "1043002656610-3pqopqdv5rog773c1imnp729ecus7kqt.apps.googleusercontent.com",
+              "client_id": "505088829368-q9dm7b7llkoh22ojd95g19p8g01hugs1.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.example.temp"

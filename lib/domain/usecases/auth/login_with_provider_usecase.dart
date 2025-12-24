@@ -24,9 +24,12 @@ class LoginWithProviderUseCase {
           idToken = await firebaseAuthService.signInWithGoogle();
           break;
         case ProviderLogin.facebook:
-          return const Left(ServerFailure(message: 'Facebook login not implemented yet'));
+          idToken = await firebaseAuthService.signInWithFacebook();
+          break;
         case ProviderLogin.apple:
-          return const Left(ServerFailure(message: 'Apple login not implemented yet'));
+          return const Left(
+            ServerFailure(message: 'Apple login not implemented yet'),
+          );
       }
 
       if (idToken == null || idToken.isEmpty) {
@@ -35,13 +38,10 @@ class LoginWithProviderUseCase {
 
       final authResult = await repository.loginWithFirebase(idToken: idToken);
 
-      return authResult.fold(
-        (failure) => Left(failure),
-        (authResponse) async {
-          await repository.saveTokens(authResponse.tokens);
-          return Right(authResponse);
-        },
-      );
+      return authResult.fold((failure) => Left(failure), (authResponse) async {
+        await repository.saveTokens(authResponse.tokens);
+        return Right(authResponse);
+      });
     } catch (e) {
       return Left(ServerFailure(message: e.toString()));
     }

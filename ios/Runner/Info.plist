@@ -40,6 +40,29 @@
 				<string>jt291</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb1415913836548583</string>
+			</array>
+		</dict>
+	</array>
+	<!-- Facebook SDK Configuration -->
+	<key>FacebookAppID</key>
+	<string>1415913836548583</string>
+	<key>FacebookClientToken</key>
+	<string>f33349244f27165da22594c315266513</string>
+	<key>FacebookDisplayName</key>
+	<string>Jt291 Flutter Mobile</string>
+	<!-- Facebook URL Schemes -->
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
