@@ -10,6 +10,7 @@ import 'package:pp191225/domain/usecases/auth/login_with_provider_usecase.dart';
 import 'package:pp191225/domain/usecases/auth/login_with_password_usecase.dart';
 import 'package:pp191225/domain/usecases/auth/logout_usecase.dart';
 import 'package:pp191225/domain/usecases/auth/login_usecase.dart';
+import 'package:pp191225/domain/usecases/user/get_current_user_usecase.dart';
 import 'package:pp191225/providers/usecases_provider.dart';
 
 class AuthController extends AutoDisposeNotifier<User?> {
@@ -17,6 +18,7 @@ class AuthController extends AutoDisposeNotifier<User?> {
   late final LoginWithPasswordUseCase _loginWithPasswordUseCase;
   late final LoginUseCase _loginUseCase;
   late final LogoutUseCase _logoutUseCase;
+  late final GetCurrentUserUseCase _getCurrentUserUseCase;
 
   @override
   User? build() {
@@ -24,7 +26,31 @@ class AuthController extends AutoDisposeNotifier<User?> {
     _loginWithPasswordUseCase = ref.read(loginWithPasswordUseCaseProvider);
     _loginUseCase = ref.read(loginUseCaseProvider);
     _logoutUseCase = ref.read(logoutUseCaseProvider);
+    _getCurrentUserUseCase = ref.read(getCurrentUserUseCaseProvider);
     return null;
+  }
+
+  /// Load current user profile from stored token
+  Future<bool> loadCurrentUser() async {
+    try {
+      final result = await _getCurrentUserUseCase();
+
+      return result.fold(
+        (failure) {
+          // Token might be invalid or expired, clear state
+          state = null;
+          return false;
+        },
+        (user) {
+          state = user;
+          return true;
+        },
+      );
+    } catch (e) {
+      // Handle any unexpected errors
+      state = null;
+      return false;
+    }
   }
 
   Future<void> loginWithPassword(

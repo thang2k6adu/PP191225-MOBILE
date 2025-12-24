@@ -13,13 +13,33 @@ class AppInitializer extends ConsumerStatefulWidget {
 }
 
 class AppInitializerState extends ConsumerState<AppInitializer> {
+  bool _isInitialized = false;
+
   @override
   void initState() {
     super.initState();
+    _initializeApp();
+  }
+
+  Future<void> _initializeApp() async {
+    // Try to load current user from stored token
+    final authController = ref.read(authControllerProvider.notifier);
+    await authController.loadCurrentUser();
+
+    if (mounted) {
+      setState(() {
+        _isInitialized = true;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    // Show loading while initializing
+    if (!_isInitialized) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+
     final user = ref.watch(authControllerProvider);
     final router = ref.read(routerProvider);
 
