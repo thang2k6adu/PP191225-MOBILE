@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -5,6 +6,7 @@ import 'package:pp191225/core/constants/route_constants.dart';
 import 'package:pp191225/core/theme/app_colors.dart';
 import 'package:pp191225/presentation/auth/controllers/auth_controller.dart';
 import 'package:pp191225/presentation/room/screens/room_list_screen.dart';
+import 'package:pp191225/presentation/tasks/screens/task_list_screen.dart';
 
 class MainScreen extends ConsumerStatefulWidget {
   const MainScreen({super.key});
@@ -24,17 +26,81 @@ class _MainScreenState extends ConsumerState<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Replace with your actual screens
     final List<Widget> children = [
       _buildHomeTab(context),
-      const Center(child: Text("Search Screen")),
-      const Center(child: Text("Notifications Screen")),
+      const TaskListScreen(),
+      const Center(child: Text("Files Screen")),
       const Center(child: Text("Profile Screen")),
     ];
 
     return Scaffold(
+      body: children[selectedIndex],
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: const Color.fromRGBO(0, 0, 0, 0.1),
+              blurRadius: 10,
+              offset: const Offset(0, -2),
+            ),
+          ],
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                _buildNavItem(
+                  icon: CupertinoIcons.chart_bar,
+                  label: '',
+                  index: 0,
+                ),
+                _buildNavItem(
+                  icon: CupertinoIcons.doc_text,
+                  label: '',
+                  index: 1,
+                ),
+                _buildNavItem(icon: CupertinoIcons.folder, label: '', index: 2),
+                _buildNavItem(icon: CupertinoIcons.person, label: '', index: 3),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildNavItem({
+    required IconData icon,
+    required String label,
+    required int index,
+  }) {
+    final isSelected = selectedIndex == index;
+
+    return GestureDetector(
+      onTap: () => touchBottomNavBar(index),
+      behavior: HitTestBehavior.opaque,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        decoration: BoxDecoration(
+          color: isSelected ? const Color(0xFFE8E8E8) : Colors.transparent,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Icon(
+          icon,
+          size: 28,
+          color: isSelected ? Colors.black87 : Colors.grey,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHomeTab(BuildContext context) {
+    return Scaffold(
       appBar: AppBar(
-        title: const Text('App Name'),
+        title: const Text('Home'),
         backgroundColor: AppColors.primary,
         actions: [
           IconButton(
@@ -47,108 +113,87 @@ class _MainScreenState extends ConsumerState<MainScreen> {
           ),
         ],
       ),
-      body: children[selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: selectedIndex,
-        onTap: touchBottomNavBar,
-        backgroundColor: Colors.white,
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: AppColors.primary,
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: "Notifications",
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildHomeTab(BuildContext context) {
-    return Column(
-      children: [
-        // Matchmaking Card
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Card(
-            elevation: 4,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: InkWell(
-              onTap: () {
-                context.push(RouteConstants.matchmaking);
-              },
-              borderRadius: BorderRadius.circular(16),
-              child: Container(
-                padding: const EdgeInsets.all(24),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      AppColors.primary,
-                      AppColors.primary.withOpacity(0.7),
-                    ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
+      body: Column(
+        children: [
+          // Matchmaking Card
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Card(
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: InkWell(
+                onTap: () {
+                  context.push(RouteConstants.matchmaking);
+                },
+                borderRadius: BorderRadius.circular(16),
+                child: Container(
+                  padding: const EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        AppColors.primary,
+                        AppColors.primary.withValues(alpha: 0.7),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.circular(16),
                   ),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(12),
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withValues(alpha: 0.2),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Icon(
+                          Icons.gamepad,
+                          size: 48,
+                          color: Colors.white,
+                        ),
                       ),
-                      child: const Icon(
-                        Icons.gamepad,
-                        size: 48,
+                      const SizedBox(width: 20),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Find Match',
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              'Challenge an opponent',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.white.withValues(alpha: 0.9),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Icon(
+                        Icons.arrow_forward_ios,
                         color: Colors.white,
+                        size: 24,
                       ),
-                    ),
-                    const SizedBox(width: 20),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Find Match',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            'Challenge an opponent',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.white.withOpacity(0.9),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const Icon(
-                      Icons.arrow_forward_ios,
-                      color: Colors.white,
-                      size: 24,
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-        // Room List
-        const Expanded(child: RoomListScreen()),
-      ],
+          // Room List
+          const Expanded(child: RoomListScreen()),
+        ],
+      ),
     );
   }
 }

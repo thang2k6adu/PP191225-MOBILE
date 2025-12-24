@@ -16,6 +16,8 @@ import 'package:pp191225/domain/usecases/matchmaking/listen_match_found_usecase.
 import 'package:pp191225/domain/usecases/room/get_room_info_usecase.dart';
 import 'package:pp191225/domain/usecases/room/join_matchmaking_usecase.dart';
 import 'package:pp191225/domain/usecases/room/leave_room_usecase.dart';
+import 'package:pp191225/domain/usecases/tasks/create_task_usecase.dart';
+import 'package:pp191225/domain/usecases/tasks/get_tasks_usecase.dart';
 import 'package:pp191225/domain/usecases/user/get_current_user_usecase.dart';
 import 'package:pp191225/domain/usecases/user/update_user_profile_usecase.dart';
 import 'package:pp191225/providers/repositories_provider.dart';
@@ -152,4 +154,20 @@ final listenMatchFoundUseCaseProvider = Provider<ListenMatchFoundUseCase>((
 ) {
   final repository = ref.watch(matchmakingRepositoryProvider);
   return ListenMatchFoundUseCase(repository);
+});
+
+// ============================================================================
+// Task UseCases
+// ============================================================================
+
+/// Provide GetTasksUseCase
+final getTasksUseCaseProvider = Provider<GetTasksUseCase>((ref) {
+  final repository = ref.watch(taskRepositoryProvider);
+  return GetTasksUseCase(repository);
+});
+
+/// Provide CreateTaskUseCase
+final createTaskUseCaseProvider = Provider<CreateTaskUseCase>((ref) {
+  final repository = ref.watch(taskRepositoryProvider);
+  return CreateTaskUseCase(repository);
 });

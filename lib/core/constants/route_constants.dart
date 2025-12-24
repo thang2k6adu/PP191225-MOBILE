@@ -15,7 +15,7 @@ class RouteConstants {
   static const String userProfile = "/user/profile";
   static const String userProfileView = "/user/profile/view";
   static const String userGifts = "/user/gifts";
-  
+
   static const String userSetting = "/user/setting";
   static const String myAlbum = "/user/my-album";
   static const String albumViewer = "/user/album-viewer";
@@ -43,12 +43,16 @@ class RouteConstants {
   static const String feed = "/feed";
   static const String addHastag = "/add-hastag";
   static const String postDetail = "/post/:postId";
-  static const String commentReplies = "/post/:postId/comment/:commentId/replies";
+  static const String commentReplies =
+      "/post/:postId/comment/:commentId/replies";
   static const String postLikes = "/post/:postId/likes";
   static const String notifications = "/notifications";
   static const String hashtag = "/hashtag/:hashtagId";
-  
+
   // Room routes
   static const String roomList = "/rooms";
   static const String roomDetail = "/rooms/:roomId";
+
+  // Task routes
+  static const String tasks = "/tasks";
 }

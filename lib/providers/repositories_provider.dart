@@ -2,10 +2,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pp191225/data/repositories/auth_repository_impl.dart';
 import 'package:pp191225/data/repositories/matchmaking_repository_impl.dart';
 import 'package:pp191225/data/repositories/room_repository_impl.dart';
+import 'package:pp191225/data/repositories/task_repository_impl.dart';
 import 'package:pp191225/data/repositories/user_repository_impl.dart';
 import 'package:pp191225/domain/repositories/auth_repository.dart';
 import 'package:pp191225/domain/repositories/matchmaking_repository.dart';
 import 'package:pp191225/domain/repositories/room_repository.dart';
+import 'package:pp191225/domain/repositories/task_repository.dart';
 import 'package:pp191225/domain/repositories/user_repository.dart';
 import 'package:pp191225/providers/datasources_provider.dart';
 
@@ -43,4 +45,11 @@ final matchmakingRepositoryProvider = Provider<MatchmakingRepository>((ref) {
   final remoteDataSource = ref.watch(matchmakingRemoteDataSourceProvider);
 
   return MatchmakingRepositoryImpl(remoteDataSource: remoteDataSource);
+});
+
+/// Provide TaskRepository
+final taskRepositoryProvider = Provider<TaskRepository>((ref) {
+  final remoteDataSource = ref.watch(taskRemoteDataSourceProvider);
+
+  return TaskRepositoryImpl(remoteDataSource: remoteDataSource);
 });
