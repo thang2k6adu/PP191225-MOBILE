@@ -18,6 +18,12 @@ abstract class TaskDto with _$TaskDto {
     required DateTime deadline,
     required String status, // PLANNED, ACTIVE, DONE
     @JsonKey(name: 'isActive') @Default(false) bool isActive,
+    @JsonKey(name: 'progress', defaultValue: 0.0)
+    @Default(0.0)
+    double progress, // 0-100%
+    @JsonKey(name: 'totalTimeSpent', defaultValue: 0)
+    @Default(0)
+    int totalTimeSpent, // Total seconds spent
     @JsonKey(name: 'userId') required String userId,
     @JsonKey(name: 'createdAt') required DateTime createdAt,
     @JsonKey(name: 'updatedAt') required DateTime updatedAt,
@@ -35,6 +41,8 @@ abstract class TaskDto with _$TaskDto {
       deadline: deadline,
       status: status,
       isActive: isActive,
+      progress: progress,
+      totalTimeSpent: totalTimeSpent,
       userId: userId,
       createdAt: createdAt,
       updatedAt: updatedAt,
@@ -64,6 +72,8 @@ extension TaskToDto on Task {
       deadline: deadline,
       status: status,
       isActive: isActive,
+      progress: progress,
+      totalTimeSpent: totalTimeSpent,
       userId: userId,
       createdAt: createdAt,
       updatedAt: updatedAt,

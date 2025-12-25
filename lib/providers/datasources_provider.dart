@@ -10,6 +10,8 @@ import 'package:pp191225/data/datasources/remote/room_remote_datasource.dart';
 import 'package:pp191225/data/datasources/remote/room_remote_datasource_impl.dart';
 import 'package:pp191225/data/datasources/remote/task_remote_datasource.dart';
 import 'package:pp191225/data/datasources/remote/task_remote_datasource_impl.dart';
+import 'package:pp191225/data/datasources/remote/tracking_remote_datasource.dart';
+import 'package:pp191225/data/datasources/remote/tracking_remote_datasource_impl.dart';
 import 'package:pp191225/data/datasources/remote/user_remote_datasource.dart';
 import 'package:pp191225/data/datasources/remote/user_remote_datasource_impl.dart';
 import 'package:pp191225/data/services/api_service.dart';
@@ -56,4 +58,11 @@ final matchmakingRemoteDataSourceProvider =
 final taskRemoteDataSourceProvider = Provider<TaskRemoteDataSource>((ref) {
   final apiService = ref.watch(apiServiceProvider);
   return TaskRemoteDataSourceImpl(apiService);
+});
+
+final trackingRemoteDataSourceProvider = Provider<TrackingRemoteDataSource>((
+  ref,
+) {
+  final apiService = ref.watch(apiServiceProvider);
+  return TrackingRemoteDataSourceImpl(apiService);
 });

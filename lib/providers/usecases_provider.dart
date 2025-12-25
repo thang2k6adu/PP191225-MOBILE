@@ -18,6 +18,11 @@ import 'package:pp191225/domain/usecases/room/join_matchmaking_usecase.dart';
 import 'package:pp191225/domain/usecases/room/leave_room_usecase.dart';
 import 'package:pp191225/domain/usecases/tasks/create_task_usecase.dart';
 import 'package:pp191225/domain/usecases/tasks/get_tasks_usecase.dart';
+import 'package:pp191225/domain/usecases/tracking/activate_task_usecase.dart';
+import 'package:pp191225/domain/usecases/tracking/get_progress_usecase.dart';
+import 'package:pp191225/domain/usecases/tracking/pause_session_usecase.dart';
+import 'package:pp191225/domain/usecases/tracking/resume_session_usecase.dart';
+import 'package:pp191225/domain/usecases/tracking/stop_session_usecase.dart';
 import 'package:pp191225/domain/usecases/user/get_current_user_usecase.dart';
 import 'package:pp191225/domain/usecases/user/update_user_profile_usecase.dart';
 import 'package:pp191225/providers/repositories_provider.dart';
@@ -170,4 +175,38 @@ final getTasksUseCaseProvider = Provider<GetTasksUseCase>((ref) {
 final createTaskUseCaseProvider = Provider<CreateTaskUseCase>((ref) {
   final repository = ref.watch(taskRepositoryProvider);
   return CreateTaskUseCase(repository);
+});
+
+// ============================================================================
+// Tracking UseCases
+// ============================================================================
+
+/// Provide ActivateTaskUseCase
+final activateTaskUseCaseProvider = Provider<ActivateTaskUseCase>((ref) {
+  final repository = ref.watch(trackingRepositoryProvider);
+  return ActivateTaskUseCase(repository);
+});
+
+/// Provide PauseSessionUseCase
+final pauseSessionUseCaseProvider = Provider<PauseSessionUseCase>((ref) {
+  final repository = ref.watch(trackingRepositoryProvider);
+  return PauseSessionUseCase(repository);
+});
+
+/// Provide ResumeSessionUseCase
+final resumeSessionUseCaseProvider = Provider<ResumeSessionUseCase>((ref) {
+  final repository = ref.watch(trackingRepositoryProvider);
+  return ResumeSessionUseCase(repository);
+});
+
+/// Provide StopSessionUseCase
+final stopSessionUseCaseProvider = Provider<StopSessionUseCase>((ref) {
+  final repository = ref.watch(trackingRepositoryProvider);
+  return StopSessionUseCase(repository);
+});
+
+/// Provide GetProgressUseCase
+final getProgressUseCaseProvider = Provider<GetProgressUseCase>((ref) {
+  final repository = ref.watch(trackingRepositoryProvider);
+  return GetProgressUseCase(repository);
 });

@@ -7,6 +7,8 @@ class Task {
   final DateTime deadline;
   final String status; // PLANNED, ACTIVE, DONE
   final bool isActive;
+  final double progress; // 0-100%
+  final int totalTimeSpent; // Total seconds spent
   final String userId;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -18,6 +20,8 @@ class Task {
     required this.deadline,
     required this.status,
     required this.isActive,
+    this.progress = 0.0,
+    this.totalTimeSpent = 0,
     required this.userId,
     required this.createdAt,
     required this.updatedAt,
@@ -34,6 +38,8 @@ class Task {
         other.deadline == deadline &&
         other.status == status &&
         other.isActive == isActive &&
+        other.progress == progress &&
+        other.totalTimeSpent == totalTimeSpent &&
         other.userId == userId &&
         other.createdAt == createdAt &&
         other.updatedAt == updatedAt;
@@ -47,6 +53,8 @@ class Task {
         deadline.hashCode ^
         status.hashCode ^
         isActive.hashCode ^
+        progress.hashCode ^
+        totalTimeSpent.hashCode ^
         userId.hashCode ^
         createdAt.hashCode ^
         updatedAt.hashCode;
@@ -59,6 +67,8 @@ class Task {
     DateTime? deadline,
     String? status,
     bool? isActive,
+    double? progress,
+    int? totalTimeSpent,
     String? userId,
     DateTime? createdAt,
     DateTime? updatedAt,
@@ -70,6 +80,8 @@ class Task {
       deadline: deadline ?? this.deadline,
       status: status ?? this.status,
       isActive: isActive ?? this.isActive,
+      progress: progress ?? this.progress,
+      totalTimeSpent: totalTimeSpent ?? this.totalTimeSpent,
       userId: userId ?? this.userId,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
@@ -78,6 +90,6 @@ class Task {
 
   @override
   String toString() {
-    return 'Task(id: $id, name: $name, estimateHours: $estimateHours, deadline: $deadline, status: $status, isActive: $isActive)';
+    return 'Task(id: $id, name: $name, estimateHours: $estimateHours, deadline: $deadline, status: $status, isActive: $isActive, progress: $progress%, totalTimeSpent: $totalTimeSpent)';
   }
 }

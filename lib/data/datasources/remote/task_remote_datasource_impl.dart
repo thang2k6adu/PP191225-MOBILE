@@ -1,3 +1,4 @@
+import 'package:pp191225/core/constants/api_endpoints.dart';
 import 'package:pp191225/data/datasources/remote/task_remote_datasource.dart';
 import 'package:pp191225/data/models/base/api_response.dart';
 import 'package:pp191225/data/models/tasks/task_dto.dart';
@@ -11,7 +12,7 @@ class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
   @override
   Future<List<TaskDto>> getTasks() async {
     print('🔍 TaskRemoteDataSource - Fetching tasks...');
-    final response = await apiService.get('/tasks');
+    final response = await apiService.get(ApiEndpoints.tasks);
 
     final parsed = ApiResponse<PaginatedData<TaskDto>>.fromJson(
       response,
@@ -40,7 +41,10 @@ class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
 
     print('🔍 API Request Body: $requestBody');
 
-    final response = await apiService.post('/tasks', data: requestBody);
+    final response = await apiService.post(
+      ApiEndpoints.tasks,
+      data: requestBody,
+    );
 
     print('🔍 API Response: $response');
 

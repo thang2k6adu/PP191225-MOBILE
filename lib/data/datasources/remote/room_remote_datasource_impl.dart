@@ -1,3 +1,4 @@
+import 'package:pp191225/core/constants/api_endpoints.dart';
 import 'package:pp191225/data/datasources/remote/room_remote_datasource.dart';
 import 'package:pp191225/data/models/base/api_response.dart';
 import 'package:pp191225/data/models/room/matchmaking_response_dto.dart';
@@ -11,7 +12,7 @@ class RoomRemoteDataSourceImpl implements RoomRemoteDataSource {
 
   @override
   Future<MatchmakingResponseDto> joinMatchmaking() async {
-    final res = await apiService.dio.post('/api/rooms/matchmaking/join');
+    final res = await apiService.dio.post(ApiEndpoints.roomMatchmakingJoin);
     final parsed = ApiResponse<MatchmakingResponseDto>.fromJson(
       res.data,
       (data) => MatchmakingResponseDto.fromJson(data as Map<String, dynamic>),
@@ -21,7 +22,7 @@ class RoomRemoteDataSourceImpl implements RoomRemoteDataSource {
 
   @override
   Future<RoomDto> getRoomInfo(String roomId) async {
-    final res = await apiService.dio.get('/api/rooms/$roomId');
+    final res = await apiService.dio.get(ApiEndpoints.getRoomInfo(roomId));
     final parsed = ApiResponse<RoomDto>.fromJson(
       res.data,
       (data) => RoomDto.fromJson(data as Map<String, dynamic>),
@@ -31,6 +32,6 @@ class RoomRemoteDataSourceImpl implements RoomRemoteDataSource {
 
   @override
   Future<void> leaveRoom(String roomId) async {
-    await apiService.dio.post('/api/rooms/$roomId/leave');
+    await apiService.dio.post(ApiEndpoints.leaveRoom(roomId));
   }
 }

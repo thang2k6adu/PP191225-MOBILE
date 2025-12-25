@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:pp191225/core/constants/api_endpoints.dart';
 import 'package:pp191225/data/datasources/remote/matchmaking_remote_datasource.dart';
 import 'package:pp191225/data/models/base/api_response.dart';
 import 'package:pp191225/data/models/matchmaking/match_found_dto.dart';
@@ -28,7 +29,7 @@ class MatchmakingRemoteDataSourceImpl implements MatchmakingRemoteDataSource {
   // REST API implementations
   @override
   Future<MatchmakingResponseDto> joinMatchmaking() async {
-    final response = await apiService.dio.post('/matchmaking/join');
+    final response = await apiService.dio.post(ApiEndpoints.matchmakingJoin);
     final parsed = ApiResponse<MatchmakingResponseDto>.fromJson(
       response.data,
       (data) => MatchmakingResponseDto.fromJson(data as Map<String, dynamic>),
@@ -38,12 +39,12 @@ class MatchmakingRemoteDataSourceImpl implements MatchmakingRemoteDataSource {
 
   @override
   Future<void> cancelMatchmaking() async {
-    await apiService.dio.post('/matchmaking/cancel');
+    await apiService.dio.post(ApiEndpoints.matchmakingCancel);
   }
 
   @override
   Future<MatchmakingStatusDto> getStatus() async {
-    final response = await apiService.dio.get('/matchmaking/status');
+    final response = await apiService.dio.get(ApiEndpoints.matchmakingStatus);
     final parsed = ApiResponse<MatchmakingStatusDto>.fromJson(
       response.data,
       (data) => MatchmakingStatusDto.fromJson(data as Map<String, dynamic>),
