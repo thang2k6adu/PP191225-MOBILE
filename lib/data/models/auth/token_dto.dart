@@ -11,9 +11,9 @@ abstract class TokenDto with _$TokenDto {
   const TokenDto._();
 
   const factory TokenDto({
-    @JsonKey(name: 'accessToken') required String accessToken,
-    @JsonKey(name: 'refreshToken') String? refreshToken,
-    @JsonKey(name: 'expiresIn') int? expiresIn, // seconds
+    required String accessToken,
+    String? refreshToken,
+    int? expiresIn, // seconds
   }) = _TokenDto;
 
   factory TokenDto.fromJson(Map<String, Object?> json) =>

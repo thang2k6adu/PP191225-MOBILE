@@ -88,21 +88,14 @@ abstract class PaginatedData<T> with _$PaginatedData<T> {
 @freezed
 abstract class PaginationMeta with _$PaginationMeta {
   const factory PaginationMeta({
-    @Default(0) @JsonKey(name: 'item_count', fromJson: PaginationMeta._toInt) int itemCount,
-    @Default(0) @JsonKey(name: 'total_items', fromJson: PaginationMeta._toInt) int totalItems,
-    @Default(10) @JsonKey(name: 'items_per_page', fromJson: PaginationMeta._toInt) int itemsPerPage,
-    @Default(0) @JsonKey(name: 'total_pages', fromJson: PaginationMeta._toInt) int totalPages,
-    @Default(1) @JsonKey(name: 'current_page', fromJson: PaginationMeta._toInt) int currentPage,
+    @Default(0) int itemCount,
+    @Default(0) int totalItems,
+    @Default(10) int itemsPerPage,
+    @Default(0) int totalPages,
+    @Default(1) int currentPage,
   }) = _PaginationMeta;
 
   factory PaginationMeta.fromJson(Map<String, dynamic> json) =>
       _$PaginationMetaFromJson(json);
-
-  static int _toInt(dynamic v) {
-    if (v == null) return 0;
-    if (v is int) return v;
-    if (v is String) return int.tryParse(v) ?? 0;
-    return 0;
-  }
 }
 

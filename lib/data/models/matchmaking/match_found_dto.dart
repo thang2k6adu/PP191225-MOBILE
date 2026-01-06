@@ -10,6 +10,8 @@ abstract class MatchFoundDto with _$MatchFoundDto {
     required String opponentId,
     String? opponentName,
     required String message,
+    required String livekitToken,
+    required String livekitUrl,
   }) = _MatchFoundDto;
 
   factory MatchFoundDto.fromJson(Map<String, dynamic> json) =>

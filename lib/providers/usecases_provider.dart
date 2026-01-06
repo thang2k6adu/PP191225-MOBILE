@@ -25,6 +25,17 @@ import 'package:pp191225/domain/usecases/tracking/resume_session_usecase.dart';
 import 'package:pp191225/domain/usecases/tracking/stop_session_usecase.dart';
 import 'package:pp191225/domain/usecases/user/get_current_user_usecase.dart';
 import 'package:pp191225/domain/usecases/user/update_user_profile_usecase.dart';
+import 'package:pp191225/domain/usecases/video_call/cancel_matchmaking.dart'
+    as video_call;
+import 'package:pp191225/domain/usecases/video_call/connect_to_video_call.dart';
+import 'package:pp191225/domain/usecases/video_call/connect_websocket.dart';
+import 'package:pp191225/domain/usecases/video_call/disconnect_from_video_call.dart';
+import 'package:pp191225/domain/usecases/video_call/join_matchmaking.dart'
+    as video_call;
+import 'package:pp191225/domain/usecases/video_call/leave_video_call_room.dart';
+import 'package:pp191225/domain/usecases/video_call/switch_camera.dart';
+import 'package:pp191225/domain/usecases/video_call/toggle_camera.dart';
+import 'package:pp191225/domain/usecases/video_call/toggle_microphone.dart';
 import 'package:pp191225/providers/repositories_provider.dart';
 import 'package:pp191225/providers/datasources_provider.dart';
 
@@ -209,4 +220,62 @@ final stopSessionUseCaseProvider = Provider<StopSessionUseCase>((ref) {
 final getProgressUseCaseProvider = Provider<GetProgressUseCase>((ref) {
   final repository = ref.watch(trackingRepositoryProvider);
   return GetProgressUseCase(repository);
+});
+
+// ============================================================================
+// Video Call UseCases
+// ============================================================================
+
+/// Provide ConnectWebSocketUseCase
+final connectWebSocketUseCaseProvider = Provider<ConnectWebSocketUseCase>((ref) {
+  final repository = ref.watch(videoCallRepositoryProvider);
+  return ConnectWebSocketUseCase(repository);
+});
+
+/// Provide JoinMatchmakingUseCase (Video Call)
+final joinVideoCallMatchmakingUseCaseProvider = Provider<video_call.JoinMatchmakingUseCase>((ref) {
+  final repository = ref.watch(videoCallRepositoryProvider);
+  return video_call.JoinMatchmakingUseCase(repository);
+});
+
+/// Provide CancelMatchmakingUseCase (Video Call)
+final cancelVideoCallMatchmakingUseCaseProvider = Provider<video_call.CancelMatchmakingUseCase>((ref) {
+  final repository = ref.watch(videoCallRepositoryProvider);
+  return video_call.CancelMatchmakingUseCase(repository);
+});
+
+/// Provide ConnectToVideoCallUseCase
+final connectToVideoCallUseCaseProvider = Provider<ConnectToVideoCallUseCase>((ref) {
+  final repository = ref.watch(videoCallRepositoryProvider);
+  return ConnectToVideoCallUseCase(repository);
+});
+
+/// Provide DisconnectFromVideoCallUseCase
+final disconnectFromVideoCallUseCaseProvider = Provider<DisconnectFromVideoCallUseCase>((ref) {
+  final repository = ref.watch(videoCallRepositoryProvider);
+  return DisconnectFromVideoCallUseCase(repository);
+});
+
+/// Provide LeaveVideoCallRoomUseCase
+final leaveVideoCallRoomUseCaseProvider = Provider<LeaveVideoCallRoomUseCase>((ref) {
+  final repository = ref.watch(videoCallRepositoryProvider);
+  return LeaveVideoCallRoomUseCase(repository);
+});
+
+/// Provide ToggleCameraUseCase
+final toggleCameraUseCaseProvider = Provider<ToggleCameraUseCase>((ref) {
+  final repository = ref.watch(videoCallRepositoryProvider);
+  return ToggleCameraUseCase(repository);
+});
+
+/// Provide ToggleMicrophoneUseCase
+final toggleMicrophoneUseCaseProvider = Provider<ToggleMicrophoneUseCase>((ref) {
+  final repository = ref.watch(videoCallRepositoryProvider);
+  return ToggleMicrophoneUseCase(repository);
+});
+
+/// Provide SwitchCameraUseCase
+final switchCameraUseCaseProvider = Provider<SwitchCameraUseCase>((ref) {
+  final repository = ref.watch(videoCallRepositoryProvider);
+  return SwitchCameraUseCase(repository);
 });

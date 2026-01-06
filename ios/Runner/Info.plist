@@ -87,5 +87,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<!-- Camera and Microphone Permissions for Video Call -->
+	<key>NSCameraUsageDescription</key>
+	<string>We need camera access for video calls</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We need microphone access for voice calls</string>
 </dict>
 </plist>

@@ -1,8 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pp191225/core/core.dart';
-import 'package:pp191225/presentation/auth/controllers/auth_controller.dart';
 import 'package:intl/intl.dart';
 
 class SignUpScreen extends ConsumerStatefulWidget {
@@ -21,7 +19,7 @@ class SignUpScreenState extends ConsumerState<SignUpScreen> {
   final _passwordController = TextEditingController();
 
   bool _obscurePassword = true;
-  String _selectedCountryCode = '+1';
+  // String _selectedCountryCode = '+1'; // Commented for now
 
   @override
   void dispose() {
@@ -59,7 +57,6 @@ class SignUpScreenState extends ConsumerState<SignUpScreen> {
   Future<void> _onRegister() async {
     if (!_formKey.currentState!.validate()) return;
 
-    final authController = ref.read(authControllerProvider.notifier);
     try {
       // Call your register method here
       // await authController.register(

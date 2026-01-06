@@ -13,20 +13,15 @@ abstract class TaskDto with _$TaskDto {
   const factory TaskDto({
     required String id,
     required String name,
-    @JsonKey(name: 'estimateHours', fromJson: _toDouble)
     required double estimateHours,
     required DateTime deadline,
     required String status, // PLANNED, ACTIVE, DONE
-    @JsonKey(name: 'isActive') @Default(false) bool isActive,
-    @JsonKey(name: 'progress', defaultValue: 0.0)
-    @Default(0.0)
-    double progress, // 0-100%
-    @JsonKey(name: 'totalTimeSpent', defaultValue: 0)
-    @Default(0)
-    int totalTimeSpent, // Total seconds spent
-    @JsonKey(name: 'userId') required String userId,
-    @JsonKey(name: 'createdAt') required DateTime createdAt,
-    @JsonKey(name: 'updatedAt') required DateTime updatedAt,
+    @Default(false) bool isActive,
+    @Default(0.0) double progress, // 0-100%
+    @Default(0) int totalTimeSpent, // Total seconds spent
+    required String userId,
+    required DateTime createdAt,
+    required DateTime updatedAt,
   }) = _TaskDto;
 
   factory TaskDto.fromJson(Map<String, Object?> json) =>
@@ -48,18 +43,6 @@ abstract class TaskDto with _$TaskDto {
       updatedAt: updatedAt,
     );
   }
-}
-
-/// Helper function to convert num to double
-double _toDouble(dynamic value) {
-  if (value == null) {
-    throw ArgumentError('Cannot convert null to double');
-  }
-  if (value is double) return value;
-  if (value is int) return value.toDouble();
-  if (value is String) return double.parse(value);
-  // Handle any other numeric type
-  return (value as num).toDouble();
 }
 
 /// Extension to convert Domain Entity to DTO

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$TokenDto {
 
-@JsonKey(name: 'accessToken') String get accessToken;@JsonKey(name: 'refreshToken') String? get refreshToken;@JsonKey(name: 'expiresIn') int? get expiresIn;
+ String get accessToken; String? get refreshToken; int? get expiresIn;
 /// Create a copy of TokenDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $TokenDtoCopyWith<$Res>  {
   factory $TokenDtoCopyWith(TokenDto value, $Res Function(TokenDto) _then) = _$TokenDtoCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'accessToken') String accessToken,@JsonKey(name: 'refreshToken') String? refreshToken,@JsonKey(name: 'expiresIn') int? expiresIn
+ String accessToken, String? refreshToken, int? expiresIn
 });
 
 
@@ -155,7 +155,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'accessToken')  String accessToken, @JsonKey(name: 'refreshToken')  String? refreshToken, @JsonKey(name: 'expiresIn')  int? expiresIn)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String accessToken,  String? refreshToken,  int? expiresIn)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _TokenDto() when $default != null:
 return $default(_that.accessToken,_that.refreshToken,_that.expiresIn);case _:
@@ -176,7 +176,7 @@ return $default(_that.accessToken,_that.refreshToken,_that.expiresIn);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'accessToken')  String accessToken, @JsonKey(name: 'refreshToken')  String? refreshToken, @JsonKey(name: 'expiresIn')  int? expiresIn)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String accessToken,  String? refreshToken,  int? expiresIn)  $default,) {final _that = this;
 switch (_that) {
 case _TokenDto():
 return $default(_that.accessToken,_that.refreshToken,_that.expiresIn);case _:
@@ -196,7 +196,7 @@ return $default(_that.accessToken,_that.refreshToken,_that.expiresIn);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'accessToken')  String accessToken, @JsonKey(name: 'refreshToken')  String? refreshToken, @JsonKey(name: 'expiresIn')  int? expiresIn)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String accessToken,  String? refreshToken,  int? expiresIn)?  $default,) {final _that = this;
 switch (_that) {
 case _TokenDto() when $default != null:
 return $default(_that.accessToken,_that.refreshToken,_that.expiresIn);case _:
@@ -211,12 +211,12 @@ return $default(_that.accessToken,_that.refreshToken,_that.expiresIn);case _:
 @JsonSerializable()
 
 class _TokenDto extends TokenDto {
-  const _TokenDto({@JsonKey(name: 'accessToken') required this.accessToken, @JsonKey(name: 'refreshToken') this.refreshToken, @JsonKey(name: 'expiresIn') this.expiresIn}): super._();
+  const _TokenDto({required this.accessToken, this.refreshToken, this.expiresIn}): super._();
   factory _TokenDto.fromJson(Map<String, dynamic> json) => _$TokenDtoFromJson(json);
 
-@override@JsonKey(name: 'accessToken') final  String accessToken;
-@override@JsonKey(name: 'refreshToken') final  String? refreshToken;
-@override@JsonKey(name: 'expiresIn') final  int? expiresIn;
+@override final  String accessToken;
+@override final  String? refreshToken;
+@override final  int? expiresIn;
 
 /// Create a copy of TokenDto
 /// with the given fields replaced by the non-null parameter values.
@@ -251,7 +251,7 @@ abstract mixin class _$TokenDtoCopyWith<$Res> implements $TokenDtoCopyWith<$Res>
   factory _$TokenDtoCopyWith(_TokenDto value, $Res Function(_TokenDto) _then) = __$TokenDtoCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'accessToken') String accessToken,@JsonKey(name: 'refreshToken') String? refreshToken,@JsonKey(name: 'expiresIn') int? expiresIn
+ String accessToken, String? refreshToken, int? expiresIn
 });
 
 

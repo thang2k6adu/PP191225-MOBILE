@@ -9,7 +9,7 @@ part of 'task_dto.dart';
 _TaskDto _$TaskDtoFromJson(Map<String, dynamic> json) => _TaskDto(
   id: json['id'] as String,
   name: json['name'] as String,
-  estimateHours: _toDouble(json['estimateHours']),
+  estimateHours: (json['estimateHours'] as num).toDouble(),
   deadline: DateTime.parse(json['deadline'] as String),
   status: json['status'] as String,
   isActive: json['isActive'] as bool? ?? false,

@@ -15,10 +15,10 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$TaskDto {
 
- String get id; String get name;@JsonKey(name: 'estimateHours', fromJson: _toDouble) double get estimateHours; DateTime get deadline; String get status;// PLANNED, ACTIVE, DONE
-@JsonKey(name: 'isActive') bool get isActive;@JsonKey(name: 'progress', defaultValue: 0.0) double get progress;// 0-100%
-@JsonKey(name: 'totalTimeSpent', defaultValue: 0) int get totalTimeSpent;// Total seconds spent
-@JsonKey(name: 'userId') String get userId;@JsonKey(name: 'createdAt') DateTime get createdAt;@JsonKey(name: 'updatedAt') DateTime get updatedAt;
+ String get id; String get name; double get estimateHours; DateTime get deadline; String get status;// PLANNED, ACTIVE, DONE
+ bool get isActive; double get progress;// 0-100%
+ int get totalTimeSpent;// Total seconds spent
+ String get userId; DateTime get createdAt; DateTime get updatedAt;
 /// Create a copy of TaskDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -51,7 +51,7 @@ abstract mixin class $TaskDtoCopyWith<$Res>  {
   factory $TaskDtoCopyWith(TaskDto value, $Res Function(TaskDto) _then) = _$TaskDtoCopyWithImpl;
 @useResult
 $Res call({
- String id, String name,@JsonKey(name: 'estimateHours', fromJson: _toDouble) double estimateHours, DateTime deadline, String status,@JsonKey(name: 'isActive') bool isActive,@JsonKey(name: 'progress', defaultValue: 0.0) double progress,@JsonKey(name: 'totalTimeSpent', defaultValue: 0) int totalTimeSpent,@JsonKey(name: 'userId') String userId,@JsonKey(name: 'createdAt') DateTime createdAt,@JsonKey(name: 'updatedAt') DateTime updatedAt
+ String id, String name, double estimateHours, DateTime deadline, String status, bool isActive, double progress, int totalTimeSpent, String userId, DateTime createdAt, DateTime updatedAt
 });
 
 
@@ -166,7 +166,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name, @JsonKey(name: 'estimateHours', fromJson: _toDouble)  double estimateHours,  DateTime deadline,  String status, @JsonKey(name: 'isActive')  bool isActive, @JsonKey(name: 'progress', defaultValue: 0.0)  double progress, @JsonKey(name: 'totalTimeSpent', defaultValue: 0)  int totalTimeSpent, @JsonKey(name: 'userId')  String userId, @JsonKey(name: 'createdAt')  DateTime createdAt, @JsonKey(name: 'updatedAt')  DateTime updatedAt)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  double estimateHours,  DateTime deadline,  String status,  bool isActive,  double progress,  int totalTimeSpent,  String userId,  DateTime createdAt,  DateTime updatedAt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _TaskDto() when $default != null:
 return $default(_that.id,_that.name,_that.estimateHours,_that.deadline,_that.status,_that.isActive,_that.progress,_that.totalTimeSpent,_that.userId,_that.createdAt,_that.updatedAt);case _:
@@ -187,7 +187,7 @@ return $default(_that.id,_that.name,_that.estimateHours,_that.deadline,_that.sta
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name, @JsonKey(name: 'estimateHours', fromJson: _toDouble)  double estimateHours,  DateTime deadline,  String status, @JsonKey(name: 'isActive')  bool isActive, @JsonKey(name: 'progress', defaultValue: 0.0)  double progress, @JsonKey(name: 'totalTimeSpent', defaultValue: 0)  int totalTimeSpent, @JsonKey(name: 'userId')  String userId, @JsonKey(name: 'createdAt')  DateTime createdAt, @JsonKey(name: 'updatedAt')  DateTime updatedAt)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  double estimateHours,  DateTime deadline,  String status,  bool isActive,  double progress,  int totalTimeSpent,  String userId,  DateTime createdAt,  DateTime updatedAt)  $default,) {final _that = this;
 switch (_that) {
 case _TaskDto():
 return $default(_that.id,_that.name,_that.estimateHours,_that.deadline,_that.status,_that.isActive,_that.progress,_that.totalTimeSpent,_that.userId,_that.createdAt,_that.updatedAt);case _:
@@ -207,7 +207,7 @@ return $default(_that.id,_that.name,_that.estimateHours,_that.deadline,_that.sta
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name, @JsonKey(name: 'estimateHours', fromJson: _toDouble)  double estimateHours,  DateTime deadline,  String status, @JsonKey(name: 'isActive')  bool isActive, @JsonKey(name: 'progress', defaultValue: 0.0)  double progress, @JsonKey(name: 'totalTimeSpent', defaultValue: 0)  int totalTimeSpent, @JsonKey(name: 'userId')  String userId, @JsonKey(name: 'createdAt')  DateTime createdAt, @JsonKey(name: 'updatedAt')  DateTime updatedAt)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  double estimateHours,  DateTime deadline,  String status,  bool isActive,  double progress,  int totalTimeSpent,  String userId,  DateTime createdAt,  DateTime updatedAt)?  $default,) {final _that = this;
 switch (_that) {
 case _TaskDto() when $default != null:
 return $default(_that.id,_that.name,_that.estimateHours,_that.deadline,_that.status,_that.isActive,_that.progress,_that.totalTimeSpent,_that.userId,_that.createdAt,_that.updatedAt);case _:
@@ -222,23 +222,23 @@ return $default(_that.id,_that.name,_that.estimateHours,_that.deadline,_that.sta
 @JsonSerializable()
 
 class _TaskDto extends TaskDto {
-  const _TaskDto({required this.id, required this.name, @JsonKey(name: 'estimateHours', fromJson: _toDouble) required this.estimateHours, required this.deadline, required this.status, @JsonKey(name: 'isActive') this.isActive = false, @JsonKey(name: 'progress', defaultValue: 0.0) this.progress = 0.0, @JsonKey(name: 'totalTimeSpent', defaultValue: 0) this.totalTimeSpent = 0, @JsonKey(name: 'userId') required this.userId, @JsonKey(name: 'createdAt') required this.createdAt, @JsonKey(name: 'updatedAt') required this.updatedAt}): super._();
+  const _TaskDto({required this.id, required this.name, required this.estimateHours, required this.deadline, required this.status, this.isActive = false, this.progress = 0.0, this.totalTimeSpent = 0, required this.userId, required this.createdAt, required this.updatedAt}): super._();
   factory _TaskDto.fromJson(Map<String, dynamic> json) => _$TaskDtoFromJson(json);
 
 @override final  String id;
 @override final  String name;
-@override@JsonKey(name: 'estimateHours', fromJson: _toDouble) final  double estimateHours;
+@override final  double estimateHours;
 @override final  DateTime deadline;
 @override final  String status;
 // PLANNED, ACTIVE, DONE
-@override@JsonKey(name: 'isActive') final  bool isActive;
-@override@JsonKey(name: 'progress', defaultValue: 0.0) final  double progress;
+@override@JsonKey() final  bool isActive;
+@override@JsonKey() final  double progress;
 // 0-100%
-@override@JsonKey(name: 'totalTimeSpent', defaultValue: 0) final  int totalTimeSpent;
+@override@JsonKey() final  int totalTimeSpent;
 // Total seconds spent
-@override@JsonKey(name: 'userId') final  String userId;
-@override@JsonKey(name: 'createdAt') final  DateTime createdAt;
-@override@JsonKey(name: 'updatedAt') final  DateTime updatedAt;
+@override final  String userId;
+@override final  DateTime createdAt;
+@override final  DateTime updatedAt;
 
 /// Create a copy of TaskDto
 /// with the given fields replaced by the non-null parameter values.
@@ -273,7 +273,7 @@ abstract mixin class _$TaskDtoCopyWith<$Res> implements $TaskDtoCopyWith<$Res> {
   factory _$TaskDtoCopyWith(_TaskDto value, $Res Function(_TaskDto) _then) = __$TaskDtoCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name,@JsonKey(name: 'estimateHours', fromJson: _toDouble) double estimateHours, DateTime deadline, String status,@JsonKey(name: 'isActive') bool isActive,@JsonKey(name: 'progress', defaultValue: 0.0) double progress,@JsonKey(name: 'totalTimeSpent', defaultValue: 0) int totalTimeSpent,@JsonKey(name: 'userId') String userId,@JsonKey(name: 'createdAt') DateTime createdAt,@JsonKey(name: 'updatedAt') DateTime updatedAt
+ String id, String name, double estimateHours, DateTime deadline, String status, bool isActive, double progress, int totalTimeSpent, String userId, DateTime createdAt, DateTime updatedAt
 });
 
 

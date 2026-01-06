@@ -5,12 +5,14 @@ import 'package:pp191225/data/repositories/room_repository_impl.dart';
 import 'package:pp191225/data/repositories/task_repository_impl.dart';
 import 'package:pp191225/data/repositories/tracking_repository_impl.dart';
 import 'package:pp191225/data/repositories/user_repository_impl.dart';
+import 'package:pp191225/data/repositories/video_call_repository_impl.dart';
 import 'package:pp191225/domain/repositories/auth_repository.dart';
 import 'package:pp191225/domain/repositories/matchmaking_repository.dart';
 import 'package:pp191225/domain/repositories/room_repository.dart';
 import 'package:pp191225/domain/repositories/task_repository.dart';
 import 'package:pp191225/domain/repositories/tracking_repository.dart';
 import 'package:pp191225/domain/repositories/user_repository.dart';
+import 'package:pp191225/domain/repositories/video_call_repository.dart';
 import 'package:pp191225/providers/datasources_provider.dart';
 
 // ============================================================================
@@ -61,4 +63,11 @@ final trackingRepositoryProvider = Provider<TrackingRepository>((ref) {
   final remoteDataSource = ref.watch(trackingRemoteDataSourceProvider);
 
   return TrackingRepositoryImpl(remoteDataSource: remoteDataSource);
+});
+
+/// Provide VideoCallRepository
+final videoCallRepositoryProvider = Provider<VideoCallRepository>((ref) {
+  final remoteDataSource = ref.watch(videoCallRemoteDataSourceProvider);
+
+  return VideoCallRepositoryImpl(remoteDataSource);
 });

@@ -36,6 +36,10 @@ class ApiEndpoints {
   static String getRoomInfo(String roomId) => '/rooms/$roomId';
   static String leaveRoom(String roomId) => '/rooms/$roomId/leave';
 
+  // Video Call / LiveKit endpoints
+  static const String videoCallToken = '/video-call/token';
+  static String getVideoCallToken(String roomId) => '/video-call/token/$roomId';
+
   // Health check endpoints
   static const String healthCheck = '/health';
   static const String versionCheck = '/version';

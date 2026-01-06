@@ -56,28 +56,18 @@ Map<String, dynamic> _$PaginatedDataToJson<T>(
 
 _PaginationMeta _$PaginationMetaFromJson(Map<String, dynamic> json) =>
     _PaginationMeta(
-      itemCount: json['item_count'] == null
-          ? 0
-          : PaginationMeta._toInt(json['item_count']),
-      totalItems: json['total_items'] == null
-          ? 0
-          : PaginationMeta._toInt(json['total_items']),
-      itemsPerPage: json['items_per_page'] == null
-          ? 10
-          : PaginationMeta._toInt(json['items_per_page']),
-      totalPages: json['total_pages'] == null
-          ? 0
-          : PaginationMeta._toInt(json['total_pages']),
-      currentPage: json['current_page'] == null
-          ? 1
-          : PaginationMeta._toInt(json['current_page']),
+      itemCount: (json['itemCount'] as num?)?.toInt() ?? 0,
+      totalItems: (json['totalItems'] as num?)?.toInt() ?? 0,
+      itemsPerPage: (json['itemsPerPage'] as num?)?.toInt() ?? 10,
+      totalPages: (json['totalPages'] as num?)?.toInt() ?? 0,
+      currentPage: (json['currentPage'] as num?)?.toInt() ?? 1,
     );
 
 Map<String, dynamic> _$PaginationMetaToJson(_PaginationMeta instance) =>
     <String, dynamic>{
-      'item_count': instance.itemCount,
-      'total_items': instance.totalItems,
-      'items_per_page': instance.itemsPerPage,
-      'total_pages': instance.totalPages,
-      'current_page': instance.currentPage,
+      'itemCount': instance.itemCount,
+      'totalItems': instance.totalItems,
+      'itemsPerPage': instance.itemsPerPage,
+      'totalPages': instance.totalPages,
+      'currentPage': instance.currentPage,
     };

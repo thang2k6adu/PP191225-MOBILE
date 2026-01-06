@@ -141,6 +141,9 @@ class MatchmakingRepositoryImpl implements MatchmakingRepository {
               roomId: dto.matchData!.roomId,
               opponentId: dto.matchData!.opponentId,
               opponentName: dto.matchData!.opponentName ?? 'Unknown',
+              // These will come from match_found event via WebSocket
+              livekitToken: null,
+              livekitUrl: null,
             )
           : null,
     );
@@ -151,6 +154,8 @@ class MatchmakingRepositoryImpl implements MatchmakingRepository {
       roomId: dto.roomId,
       opponentId: dto.opponentId,
       opponentName: dto.opponentName ?? 'Unknown',
+      livekitToken: dto.livekitToken,
+      livekitUrl: dto.livekitUrl,
     );
   }
 

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MatchFoundDto {
 
- String get roomId; String get opponentId; String? get opponentName; String get message;
+ String get roomId; String get opponentId; String? get opponentName; String get message; String get livekitToken; String get livekitUrl;
 /// Create a copy of MatchFoundDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $MatchFoundDtoCopyWith<MatchFoundDto> get copyWith => _$MatchFoundDtoCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MatchFoundDto&&(identical(other.roomId, roomId) || other.roomId == roomId)&&(identical(other.opponentId, opponentId) || other.opponentId == opponentId)&&(identical(other.opponentName, opponentName) || other.opponentName == opponentName)&&(identical(other.message, message) || other.message == message));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MatchFoundDto&&(identical(other.roomId, roomId) || other.roomId == roomId)&&(identical(other.opponentId, opponentId) || other.opponentId == opponentId)&&(identical(other.opponentName, opponentName) || other.opponentName == opponentName)&&(identical(other.message, message) || other.message == message)&&(identical(other.livekitToken, livekitToken) || other.livekitToken == livekitToken)&&(identical(other.livekitUrl, livekitUrl) || other.livekitUrl == livekitUrl));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,roomId,opponentId,opponentName,message);
+int get hashCode => Object.hash(runtimeType,roomId,opponentId,opponentName,message,livekitToken,livekitUrl);
 
 @override
 String toString() {
-  return 'MatchFoundDto(roomId: $roomId, opponentId: $opponentId, opponentName: $opponentName, message: $message)';
+  return 'MatchFoundDto(roomId: $roomId, opponentId: $opponentId, opponentName: $opponentName, message: $message, livekitToken: $livekitToken, livekitUrl: $livekitUrl)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $MatchFoundDtoCopyWith<$Res>  {
   factory $MatchFoundDtoCopyWith(MatchFoundDto value, $Res Function(MatchFoundDto) _then) = _$MatchFoundDtoCopyWithImpl;
 @useResult
 $Res call({
- String roomId, String opponentId, String? opponentName, String message
+ String roomId, String opponentId, String? opponentName, String message, String livekitToken, String livekitUrl
 });
 
 
@@ -65,12 +65,14 @@ class _$MatchFoundDtoCopyWithImpl<$Res>
 
 /// Create a copy of MatchFoundDto
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? roomId = null,Object? opponentId = null,Object? opponentName = freezed,Object? message = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? roomId = null,Object? opponentId = null,Object? opponentName = freezed,Object? message = null,Object? livekitToken = null,Object? livekitUrl = null,}) {
   return _then(_self.copyWith(
 roomId: null == roomId ? _self.roomId : roomId // ignore: cast_nullable_to_non_nullable
 as String,opponentId: null == opponentId ? _self.opponentId : opponentId // ignore: cast_nullable_to_non_nullable
 as String,opponentName: freezed == opponentName ? _self.opponentName : opponentName // ignore: cast_nullable_to_non_nullable
 as String?,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,livekitToken: null == livekitToken ? _self.livekitToken : livekitToken // ignore: cast_nullable_to_non_nullable
+as String,livekitUrl: null == livekitUrl ? _self.livekitUrl : livekitUrl // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -156,10 +158,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String roomId,  String opponentId,  String? opponentName,  String message)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String roomId,  String opponentId,  String? opponentName,  String message,  String livekitToken,  String livekitUrl)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MatchFoundDto() when $default != null:
-return $default(_that.roomId,_that.opponentId,_that.opponentName,_that.message);case _:
+return $default(_that.roomId,_that.opponentId,_that.opponentName,_that.message,_that.livekitToken,_that.livekitUrl);case _:
   return orElse();
 
 }
@@ -177,10 +179,10 @@ return $default(_that.roomId,_that.opponentId,_that.opponentName,_that.message);
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String roomId,  String opponentId,  String? opponentName,  String message)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String roomId,  String opponentId,  String? opponentName,  String message,  String livekitToken,  String livekitUrl)  $default,) {final _that = this;
 switch (_that) {
 case _MatchFoundDto():
-return $default(_that.roomId,_that.opponentId,_that.opponentName,_that.message);case _:
+return $default(_that.roomId,_that.opponentId,_that.opponentName,_that.message,_that.livekitToken,_that.livekitUrl);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -197,10 +199,10 @@ return $default(_that.roomId,_that.opponentId,_that.opponentName,_that.message);
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String roomId,  String opponentId,  String? opponentName,  String message)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String roomId,  String opponentId,  String? opponentName,  String message,  String livekitToken,  String livekitUrl)?  $default,) {final _that = this;
 switch (_that) {
 case _MatchFoundDto() when $default != null:
-return $default(_that.roomId,_that.opponentId,_that.opponentName,_that.message);case _:
+return $default(_that.roomId,_that.opponentId,_that.opponentName,_that.message,_that.livekitToken,_that.livekitUrl);case _:
   return null;
 
 }
@@ -212,13 +214,15 @@ return $default(_that.roomId,_that.opponentId,_that.opponentName,_that.message);
 @JsonSerializable()
 
 class _MatchFoundDto implements MatchFoundDto {
-  const _MatchFoundDto({required this.roomId, required this.opponentId, this.opponentName, required this.message});
+  const _MatchFoundDto({required this.roomId, required this.opponentId, this.opponentName, required this.message, required this.livekitToken, required this.livekitUrl});
   factory _MatchFoundDto.fromJson(Map<String, dynamic> json) => _$MatchFoundDtoFromJson(json);
 
 @override final  String roomId;
 @override final  String opponentId;
 @override final  String? opponentName;
 @override final  String message;
+@override final  String livekitToken;
+@override final  String livekitUrl;
 
 /// Create a copy of MatchFoundDto
 /// with the given fields replaced by the non-null parameter values.
@@ -233,16 +237,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MatchFoundDto&&(identical(other.roomId, roomId) || other.roomId == roomId)&&(identical(other.opponentId, opponentId) || other.opponentId == opponentId)&&(identical(other.opponentName, opponentName) || other.opponentName == opponentName)&&(identical(other.message, message) || other.message == message));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MatchFoundDto&&(identical(other.roomId, roomId) || other.roomId == roomId)&&(identical(other.opponentId, opponentId) || other.opponentId == opponentId)&&(identical(other.opponentName, opponentName) || other.opponentName == opponentName)&&(identical(other.message, message) || other.message == message)&&(identical(other.livekitToken, livekitToken) || other.livekitToken == livekitToken)&&(identical(other.livekitUrl, livekitUrl) || other.livekitUrl == livekitUrl));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,roomId,opponentId,opponentName,message);
+int get hashCode => Object.hash(runtimeType,roomId,opponentId,opponentName,message,livekitToken,livekitUrl);
 
 @override
 String toString() {
-  return 'MatchFoundDto(roomId: $roomId, opponentId: $opponentId, opponentName: $opponentName, message: $message)';
+  return 'MatchFoundDto(roomId: $roomId, opponentId: $opponentId, opponentName: $opponentName, message: $message, livekitToken: $livekitToken, livekitUrl: $livekitUrl)';
 }
 
 
@@ -253,7 +257,7 @@ abstract mixin class _$MatchFoundDtoCopyWith<$Res> implements $MatchFoundDtoCopy
   factory _$MatchFoundDtoCopyWith(_MatchFoundDto value, $Res Function(_MatchFoundDto) _then) = __$MatchFoundDtoCopyWithImpl;
 @override @useResult
 $Res call({
- String roomId, String opponentId, String? opponentName, String message
+ String roomId, String opponentId, String? opponentName, String message, String livekitToken, String livekitUrl
 });
 
 
@@ -270,12 +274,14 @@ class __$MatchFoundDtoCopyWithImpl<$Res>
 
 /// Create a copy of MatchFoundDto
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? roomId = null,Object? opponentId = null,Object? opponentName = freezed,Object? message = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? roomId = null,Object? opponentId = null,Object? opponentName = freezed,Object? message = null,Object? livekitToken = null,Object? livekitUrl = null,}) {
   return _then(_MatchFoundDto(
 roomId: null == roomId ? _self.roomId : roomId // ignore: cast_nullable_to_non_nullable
 as String,opponentId: null == opponentId ? _self.opponentId : opponentId // ignore: cast_nullable_to_non_nullable
 as String,opponentName: freezed == opponentName ? _self.opponentName : opponentName // ignore: cast_nullable_to_non_nullable
 as String?,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,livekitToken: null == livekitToken ? _self.livekitToken : livekitToken // ignore: cast_nullable_to_non_nullable
+as String,livekitUrl: null == livekitUrl ? _self.livekitUrl : livekitUrl // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

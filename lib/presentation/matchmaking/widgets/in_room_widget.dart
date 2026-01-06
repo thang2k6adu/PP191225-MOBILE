@@ -6,11 +6,47 @@ import 'package:pp191225/presentation/tracking/controllers/tracking_controller.d
 import 'package:pp191225/presentation/tracking/widgets/task_selection_dialog.dart';
 import 'package:pp191225/presentation/tracking/widgets/floating_task_widget.dart';
 import 'package:pp191225/presentation/tracking/widgets/session_summary_modal.dart';
+import 'package:pp191225/presentation/video_call/screens/video_call_screen.dart';
+import 'package:pp191225/providers/datasources_provider.dart';
 
-class InRoomWidget extends ConsumerWidget {
+class InRoomWidget extends ConsumerStatefulWidget {
   final MatchData? matchData;
 
   const InRoomWidget({super.key, required this.matchData});
+
+  @override
+  ConsumerState<InRoomWidget> createState() => _InRoomWidgetState();
+}
+
+class _InRoomWidgetState extends ConsumerState<InRoomWidget> {
+  bool _hasNavigated = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // Auto navigate to video call after match found
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      if (!_hasNavigated && 
+          widget.matchData != null && 
+          widget.matchData!.livekitToken != null &&
+          widget.matchData!.livekitUrl != null &&
+          mounted) {
+        _hasNavigated = true;
+        
+        // Navigate to video call with LiveKit token and URL from match data
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => VideoCallScreen(
+              livekitUrl: widget.matchData!.livekitUrl!,
+              livekitToken: widget.matchData!.livekitToken!,
+              roomId: widget.matchData!.roomId,
+              opponentName: widget.matchData!.opponentName,
+            ),
+          ),
+        );
+      }
+    });
+  }
 
   Future<bool> _handleLeaveRoom(BuildContext context, WidgetRef ref) async {
     final trackingState = ref.read(trackingControllerProvider);
@@ -97,8 +133,8 @@ class InRoomWidget extends ConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    if (matchData == null) {
+  Widget build(BuildContext context) {
+    if (widget.matchData == null) {
       return const Center(child: Text('No match data available'));
     }
 
@@ -199,7 +235,7 @@ class InRoomWidget extends ConsumerWidget {
                                 radius: 30,
                                 backgroundColor: Theme.of(context).primaryColor,
                                 child: Text(
-                                  (matchData!.opponentName ?? 'U')[0]
+                                  (widget.matchData!.opponentName ?? 'U')[0]
                                       .toUpperCase(),
                                   style: const TextStyle(
                                     color: Colors.white,
@@ -223,7 +259,7 @@ class InRoomWidget extends ConsumerWidget {
                                   ),
                                   const SizedBox(height: 4),
                                   Text(
-                                    matchData!.opponentName ?? 'Unknown Player',
+                                    widget.matchData!.opponentName ?? 'Unknown Player',
                                     style: const TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
@@ -257,7 +293,7 @@ class InRoomWidget extends ConsumerWidget {
                             const SizedBox(width: 8),
                             Expanded(
                               child: Text(
-                                matchData!.roomId,
+                                widget.matchData!.roomId,
                                 style: const TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,

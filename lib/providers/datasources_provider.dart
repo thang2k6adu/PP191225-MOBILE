@@ -14,8 +14,12 @@ import 'package:pp191225/data/datasources/remote/tracking_remote_datasource.dart
 import 'package:pp191225/data/datasources/remote/tracking_remote_datasource_impl.dart';
 import 'package:pp191225/data/datasources/remote/user_remote_datasource.dart';
 import 'package:pp191225/data/datasources/remote/user_remote_datasource_impl.dart';
+import 'package:pp191225/data/datasources/remote/video_call_remote_datasource.dart';
+import 'package:pp191225/data/datasources/remote/video_call_remote_datasource_impl.dart';
 import 'package:pp191225/data/services/api_service.dart';
 import 'package:pp191225/data/services/firebase_auth_service.dart';
+import 'package:pp191225/data/services/livekit_service.dart';
+import 'package:pp191225/data/services/socket_service.dart';
 
 final apiServiceProvider = Provider<ApiService>((ref) {
   return ApiService();
@@ -65,4 +69,23 @@ final trackingRemoteDataSourceProvider = Provider<TrackingRemoteDataSource>((
 ) {
   final apiService = ref.watch(apiServiceProvider);
   return TrackingRemoteDataSourceImpl(apiService);
+});
+
+// Video Call Services
+final socketServiceProvider = Provider<SocketService>((ref) {
+  return SocketService();
+});
+
+final liveKitServiceProvider = Provider<LiveKitService>((ref) {
+  return LiveKitService();
+});
+
+final videoCallRemoteDataSourceProvider =
+    Provider<VideoCallRemoteDataSource>((ref) {
+  final socketService = ref.watch(socketServiceProvider);
+  final liveKitService = ref.watch(liveKitServiceProvider);
+  return VideoCallRemoteDataSourceImpl(
+    socketService: socketService,
+    liveKitService: liveKitService,
+  );
 });

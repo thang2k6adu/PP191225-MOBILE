@@ -55,4 +55,7 @@ class RouteConstants {
 
   // Task routes
   static const String tasks = "/tasks";
+  
+  // Video Call routes
+  static const String videoCallMatchmaking = "/video-call-matchmaking";
 }
